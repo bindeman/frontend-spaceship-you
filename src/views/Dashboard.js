@@ -224,13 +224,16 @@ class Dashboard extends React.Component {
 
 
           <Row>
+
+
+
             <Col lg="1">
               <Card className="card-chart">
                 <CardHeader>
-                  <h5 className="card-category">Physical</h5>
                   <CardTitle tag="h3">
                     {this.state.mentalSlider}
                   </CardTitle>
+                  <h5 style={{fontSize: '10.5px', marginTop: '-12px', marginBottom: '20px'}} className="card-category">Mental</h5>
                 </CardHeader>
                 <CardBody>
                   <Row>
@@ -246,18 +249,15 @@ class Dashboard extends React.Component {
                           marks
                           min={1}
                           max={10}
-                          style={{height: '150px', marginLeft: "12px"}}
+                          style={{height: '220px', margin: "auto", display: 'block'}}
                       />
                     </Col>
                   </Row>
                 </CardBody>
               </Card>
             </Col>
-          </Row>
 
-
-          <Row>
-            <Col xs="12">
+            <Col xs="10">
               <Card className="card-chart">
                 <CardHeader>
                   <Row>
@@ -272,24 +272,24 @@ class Dashboard extends React.Component {
                     </Col>
                     <Col sm="6">
                       <ButtonGroup
-                        className="btn-group-toggle float-right"
-                        data-toggle="buttons"
+                          className="btn-group-toggle float-right"
+                          data-toggle="buttons"
                       >
                         <Button
-                          tag="label"
-                          className={classNames("btn-simple", {
-                            active: this.state.bigChartData === "data1"
-                          })}
-                          color="info"
-                          id="0"
-                          size="sm"
-                          onClick={() => this.setBgChartData("data1")}
+                            tag="label"
+                            className={classNames("btn-simple", {
+                              active: this.state.bigChartData === "data1"
+                            })}
+                            color="info"
+                            id="0"
+                            size="sm"
+                            onClick={() => this.setBgChartData("data1")}
                         >
                           <input
-                            defaultChecked
-                            className="d-none"
-                            name="options"
-                            type="radio"
+                              defaultChecked
+                              className="d-none"
+                              name="options"
+                              type="radio"
                           />
                           <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
                             Physical
@@ -299,19 +299,19 @@ class Dashboard extends React.Component {
                           </span>
                         </Button>
                         <Button
-                          color="info"
-                          id="2"
-                          size="sm"
-                          tag="label"
-                          className={classNames("btn-simple", {
-                            active: this.state.bigChartData === "data3"
-                          })}
-                          onClick={() => this.setBgChartData("data3")}
+                            color="info"
+                            id="2"
+                            size="sm"
+                            tag="label"
+                            className={classNames("btn-simple", {
+                              active: this.state.bigChartData === "data3"
+                            })}
+                            onClick={() => this.setBgChartData("data3")}
                         >
                           <input
-                            className="d-none"
-                            name="options"
-                            type="radio"
+                              className="d-none"
+                              name="options"
+                              type="radio"
                           />
                           <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
                             Mental
@@ -327,56 +327,94 @@ class Dashboard extends React.Component {
                 <CardBody>
                   <div className="chart-area">
                     <Line
-                      data={this.state.chartTemplate}
-                      options={chartExample1.options}
-                    />
-                  </div>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs="12">
-              <Card className="card-chart">
-                <CardHeader>
-                  <Row>
-                    <Col className="text-left" sm="6">
-
-                      <h5 className="card-category">
-                        Mental Health
-                      </h5>
-                      <CardTitle tag="h2">
-                        <Timer
-                            initialTime={ 9000 * 60 * 48 + 5000}
-                            lastUnit="h"
-                            direction="backward"
-                        >
-                          {() => (
-                              <React.Fragment>
-                                <Timer.Hours />:
-                                <Timer.Minutes />:
-                                <Timer.Seconds />
-                              </React.Fragment>
-                          )}
-                        </Timer>
-                      </CardTitle>
-                    </Col>
-                    <Col sm="6">
-
-                    </Col>
-                  </Row>
-                </CardHeader>
-                <CardBody>
-                  <div className="chart-area">
-                    <Line
-                        data={chartExample1[this.state.bigChartData]}
+                        data={this.state.chartTemplate}
                         options={chartExample1.options}
                     />
                   </div>
                 </CardBody>
               </Card>
             </Col>
+
+
+
+            <Col lg="1">
+              <Card className="card-chart">
+                <CardHeader>
+                  <CardTitle tag="h3">
+                    {this.state.mentalSlider}
+                  </CardTitle>
+                  <h5 style={{fontSize: '10.5px', marginTop: '-12px', marginBottom: '20px'}} className="card-category">Physical</h5>
+
+                </CardHeader>
+                <CardBody>
+                  <Row>
+                    <Col ws={"1"}>
+                      <Slider
+                          defaultValue={5}
+                          //value={this.state.mentalSlider}
+                          onChange={this.onChange}
+                          aria-labelledby="discrete-slider"
+                          orientation="vertical"
+                          valueLabelDisplay="auto"
+                          step={1}
+                          marks
+                          min={1}
+                          max={10}
+                          style={{height: '220px', margin: "auto", display: "block"}}
+                      />
+                    </Col>
+                  </Row>
+                </CardBody>
+              </Card>
+            </Col>
           </Row>
+
+        <Row>
+          <Col xs="12">
+            <Card className="card-chart">
+              <CardHeader>
+                <Row>
+                  <Col className="text-left" sm="6">
+
+                    <h5 className="card-category">
+                      Mental Health
+                    </h5>
+                    <CardTitle tag="h2">
+                      <Timer
+                          initialTime={ 9000 * 60 * 48 + 5000}
+                          lastUnit="h"
+                          direction="backward"
+                      >
+                        {() => (
+                            <React.Fragment>
+                              <Timer.Hours />:
+                              <Timer.Minutes />:
+                              <Timer.Seconds />
+                            </React.Fragment>
+                        )}
+                      </Timer>
+                    </CardTitle>
+                  </Col>
+                  <Col sm="6">
+
+                  </Col>
+                </Row>
+              </CardHeader>
+              <CardBody>
+                <div className="chart-area">
+                  <Line
+                      data={chartExample1[this.state.bigChartData]}
+                      options={chartExample1.options}
+                  />
+                </div>
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
+
+
+
+
           <Row>
             <Col lg="4">
               <Card className="card-chart">
