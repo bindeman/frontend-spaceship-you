@@ -18,7 +18,6 @@
 import React from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
-import ReactBootstrapSlider from 'react-bootstrap-slider';
 import Timer from "react-compound-timer";
 // react plugin used to create charts
 import { Line, Bar } from "react-chartjs-2";
@@ -144,6 +143,7 @@ class Dashboard extends React.Component {
             </Col>
           </Row>
 
+          <Row>
           <Col xs="12">
             <Card className="card-chart">
 
@@ -158,6 +158,9 @@ class Dashboard extends React.Component {
                   </CardTitle>
                   </CardHeader>
                 </Col>
+                  <Col xs="3">
+
+                  </Col>
                 <Col xs="6">
                   <Typography id="discrete-slider" gutterBottom>
                     Physical Wellness
@@ -172,6 +175,7 @@ class Dashboard extends React.Component {
                       max={10}
                   />
 
+
                   <Typography id="discrete-slider" gutterBottom>
                     Mental Wellness
                   </Typography>
@@ -184,11 +188,14 @@ class Dashboard extends React.Component {
                       min={1}
                       max={10}
                   />
+
                 </Col>
+
                 </Row>
               </CardBody>
             </Card>
           </Col>
+          </Row>
 
           <Row>
             <Col xs="12">
