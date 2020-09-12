@@ -104,22 +104,24 @@
 // Apply the mixin to the buttons
 // .btn-default { @include btn-styles($default-color, $default-states-color); }
 .btn-primary { @include btn-styles($primary, $primary-states);
-
+  border: 6px solid rgba(255, 255, 255, 0.20);
               }
 .btn-success { @include btn-styles($success, $success-states);
-
+  border: 6px solid rgba(255, 255, 255, 0.20);
               }
 .btn-info    { @include btn-styles($info, $info-states);
-
+  border: 6px solid rgba(255, 255, 255, 0.20);
               }
 .btn-warning { @include btn-styles($warning, $warning-states);
                 &:not(:disabled):not(.disabled):active{
                   color: $white;
                 }
+  border: 6px solid rgba(255, 255, 255, 0.20);
               }
 .btn-danger  { @include btn-styles($danger, $danger-states);
-
+  border: 6px solid rgba(255, 255, 255, 0.20);
               }
+
 .btn-neutral { @include btn-styles($white, $white); }
 
 .btn{

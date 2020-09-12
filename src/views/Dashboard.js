@@ -18,11 +18,13 @@
 import React from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
+import ReactBootstrapSlider from 'react-bootstrap-slider';
 import Timer from "react-compound-timer";
 // react plugin used to create charts
 import { Line, Bar } from "react-chartjs-2";
 import animations from "animations.js";
 import { motion } from "framer-motion";
+import { Typography, Slider } from "@material-ui/core";
 import Charts from 'chart.js'
 // reactstrap components
 import {
@@ -130,7 +132,7 @@ class Dashboard extends React.Component {
 
               <img className="hero-logo"src="https://i.ibb.co/Ms0rkCS/Screen-Shot-2020-09-12-at-11-49-29-AM.png"></img>
               <h2>Welcome to your Spaceship</h2>
-                <p>Quarantine can managing life harder. Use Spaceship You to keep track of Sleep, work, and relaxation through our four sections. Based of the YouTube video by CGP Grey.</p>
+                <p>Quarantine can managing life harder. Stay productive with Spaceship You to keep track of Sleep, work, and relaxation through our four sections. Based of the YouTube video by CGP Grey.</p>
               <Button
                   block
                   color="primary"
@@ -142,7 +144,51 @@ class Dashboard extends React.Component {
             </Col>
           </Row>
 
+          <Col xs="12">
+            <Card className="card-chart">
 
+              <CardBody>
+                <Row>
+                <Col xs="3">
+                  <CardHeader>
+                    <h5 className="card-category">Wellness</h5>
+
+                  <CardTitle tag="h2">
+                    How are you feeling today?
+                  </CardTitle>
+                  </CardHeader>
+                </Col>
+                <Col xs="6">
+                  <Typography id="discrete-slider" gutterBottom>
+                    Physical Wellness
+                  </Typography>
+                  <Slider
+                      defaultValue={5}
+                      aria-labelledby="discrete-slider"
+                      valueLabelDisplay="auto"
+                      step={1}
+                      marks
+                      min={1}
+                      max={10}
+                  />
+
+                  <Typography id="discrete-slider" gutterBottom>
+                    Mental Wellness
+                  </Typography>
+                  <Slider
+                      defaultValue={5}
+                      aria-labelledby="discrete-slider"
+                      valueLabelDisplay="auto"
+                      step={1}
+                      marks
+                      min={1}
+                      max={10}
+                  />
+                </Col>
+                </Row>
+              </CardBody>
+            </Card>
+          </Col>
 
           <Row>
             <Col xs="12">
