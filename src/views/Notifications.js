@@ -29,14 +29,14 @@ import {
   CardBody,
   CardTitle,
   Row,
-  Col
+  Col,
 } from "reactstrap";
 import animations from "../animations";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 import Timer from "react-compound-timer";
 import CardSubtitle from "reactstrap/es/CardSubtitle";
-import Clock from 'react-clock';
-import 'react-clock/dist/Clock_style.css';
+import Clock from "react-clock";
+import "react-clock/dist/Clock.css";
 
 class Notifications extends React.Component {
   constructor(props) {
@@ -45,16 +45,13 @@ class Notifications extends React.Component {
       currentTime: (new Date(), 1000),
       bedTime: new Date(),
       sidebarOpened:
-          document.documentElement.className.indexOf("nav-open") !== -1
+        document.documentElement.className.indexOf("nav-open") !== -1,
     };
   }
 
-  componentDidUpdate() {
+  componentDidUpdate() {}
 
-
-  }
-
-  notify = place => {
+  notify = (place) => {
     var color = Math.floor(Math.random() * 5 + 1);
     var type;
     switch (color) {
@@ -82,20 +79,28 @@ class Notifications extends React.Component {
       message: (
         <div>
           <div>
-            <b>Time to sleep</b> - it's almost time to sleep. You have time before bedtime.
+            <b>Time to sleep</b> - it's almost time to sleep. You have time
+            before bedtime.
           </div>
         </div>
       ),
       type: type,
       icon: "tim-icons icon-watch-time",
-      autoDismiss: 7
+      autoDismiss: 7,
     };
     this.refs.notificationAlert.notificationAlert(options);
   };
   render() {
     return (
       <>
-        <motion.div initial="initial" animate="in" exit="out" variants={animations.pageVariants} transition={animations.pageTransition} className="content">
+        <motion.div
+          initial="initial"
+          animate="in"
+          exit="out"
+          variants={animations.pageVariants}
+          transition={animations.pageTransition}
+          className="content"
+        >
           <div className="react-notification-alert-container">
             <NotificationAlert ref="notificationAlert" />
           </div>
@@ -104,21 +109,20 @@ class Notifications extends React.Component {
               <Card>
                 <CardHeader>
                   <h1>
-                <Timer
-                    initialTime={ 9000 * 60 * 48 + 5000}
-                    lastUnit="h"
-                    direction="backward"
-                >
-                  {() => (
-                      <React.Fragment>
-                        <Timer.Hours />:
-                        <Timer.Minutes />:
-                        <Timer.Seconds />
-                      </React.Fragment>
-                  )}
-                </Timer>
+                    <Timer
+                      initialTime={9000 * 60 * 48 + 5000}
+                      lastUnit="h"
+                      direction="backward"
+                    >
+                      {() => (
+                        <React.Fragment>
+                          <Timer.Hours />:
+                          <Timer.Minutes />:
+                          <Timer.Seconds />
+                        </React.Fragment>
+                      )}
+                    </Timer>
                   </h1>
-
                 </CardHeader>
                 <CardSubtitle>
                   <p>It's almost time for bed</p>
@@ -129,7 +133,8 @@ class Notifications extends React.Component {
                     <Row>
                       <Col className="ml-auto mr-auto text-center" md="6">
                         <CardTitle tag="h4">
-                          Notifications Places<p className="category">
+                          Notifications Places
+                          <p className="category">
                             Click to view notifications
                           </p>
                         </CardTitle>

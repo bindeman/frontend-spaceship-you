@@ -21,9 +21,8 @@ import { NavLink, Link } from "react-router-dom";
 // nodejs library to set properties for components
 import { PropTypes } from "prop-types";
 import { motion } from "framer-motion";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
@@ -35,7 +34,7 @@ import {
   DropdownToggle,
   Nav,
   NavLink as ReactstrapNavLink,
-  UncontrolledDropdown
+  UncontrolledDropdown,
 } from "reactstrap";
 import animations from "../../animations";
 
@@ -51,17 +50,17 @@ class Menubar extends React.Component {
     return this.props.location.pathname.indexOf(routeName) > -1 ? "active" : "";
   }
   componentDidMount() {
-    if (navigator.platform.indexOf("Win") > -1) {
-      ps = new PerfectScrollbar(this.refs.sidebar, {
-        suppressScrollX: true,
-        suppressScrollY: false
-      });
-    }
+    // if (navigator.platform.indexOf("Win") > -1) {
+    //   ps = new PerfectScrollbar(this.refs.sidebar, {
+    //     suppressScrollX: true,
+    //     suppressScrollY: false
+    //   });
+    // }
   }
   componentWillUnmount() {
-    if (navigator.platform.indexOf("Win") > -1) {
-      ps.destroy();
-    }
+    // if (navigator.platform.indexOf("Win") > -1) {
+    //   ps.destroy();
+    // }
   }
   linkOnClick = () => {
     document.documentElement.classList.remove("nav-open");
@@ -73,86 +72,83 @@ class Menubar extends React.Component {
     if (logo !== undefined) {
       if (logo.outterLink !== undefined) {
         logoImg = (
-            <a
-                href={logo.outterLink}
-                className="simple-text logo-mini"
-                target="_blank"
-                onClick={this.props.toggleSidebar}
-            >
-              <div className="logo-img">
-              </div>
-            </a>
+          <a
+            href={logo.outterLink}
+            className="simple-text logo-mini"
+            target="_blank"
+            onClick={this.props.toggleSidebar}
+          >
+            <div className="logo-img"></div>
+          </a>
         );
         logoText = (
-            <a
-                href={logo.outterLink}
-                className="simple-text logo-normal"
-                target="_blank"
-                onClick={this.props.toggleSidebar}
-            >
-              {logo.text}
-            </a>
+          <a
+            href={logo.outterLink}
+            className="simple-text logo-normal"
+            target="_blank"
+            onClick={this.props.toggleSidebar}
+          >
+            {logo.text}
+          </a>
         );
       } else {
         logoImg = (
-            <Link
-                to={logo.innerLink}
-                className="simple-text logo-mini"
-                onClick={this.props.toggleSidebar}
-            >
-              <div className="logo-img">
-
-              </div>
-            </Link>
+          <Link
+            to={logo.innerLink}
+            className="simple-text logo-mini"
+            onClick={this.props.toggleSidebar}
+          >
+            <div className="logo-img"></div>
+          </Link>
         );
         logoText = (
-            <Link
-                to={logo.innerLink}
-                className="simple-text logo-normal"
-                onClick={this.props.toggleSidebar}
-            >
-              {logo.text}
-            </Link>
+          <Link
+            to={logo.innerLink}
+            className="simple-text logo-normal"
+            onClick={this.props.toggleSidebar}
+          >
+            {logo.text}
+          </Link>
         );
       }
     }
     return (
-        //<motion.div className="drag-area" ref={constraintsRef} />
-    //<motion.div drag dragConstraints={constraintsRef} />
-<motion.div initial={{ opacity: 0 }} animate="in" variants={animations.hoverbar}
-            data={bgColor}
-            className="hoverbar">
-
-            <div class="menubar-wrapper">
-            <Nav>
-              {routes.map((prop, key) => {
-                if (prop.redirect) return null;
-                return (
-
-                    <li
-                        className={
-                          this.activeRoute(prop.path) +
-                          (prop.pro ? " active-pro" : "")
-                        }
-                        key={key}
-                    >
-                      <NavLink
-                          to={prop.layout + prop.path}
-                          className="nav-link"
-                          activeClassName="active"
-                          onClick={this.props.toggleSidebar}
-                      >
-
-                        <i className={prop.icon} />
-                        <p>{rtlActive ? prop.rtlName : prop.name}</p>
-                      </NavLink>
-                    </li>
-                );
-              })}
-
-            </Nav>
-          </div>
-    </motion.div>
+      //<motion.div className="drag-area" ref={constraintsRef} />
+      //<motion.div drag dragConstraints={constraintsRef} />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate="in"
+        variants={animations.hoverbar}
+        data={bgColor}
+        className="hoverbar"
+      >
+        <div class="menubar-wrapper">
+          <Nav>
+            {routes.map((prop, key) => {
+              if (prop.redirect) return null;
+              return (
+                <li
+                  className={
+                    this.activeRoute(prop.path) +
+                    (prop.pro ? " active-pro" : "")
+                  }
+                  key={key}
+                >
+                  <NavLink
+                    to={prop.layout + prop.path}
+                    className="nav-link"
+                    activeClassName="active"
+                    onClick={this.props.toggleSidebar}
+                  >
+                    <i className={prop.icon} />
+                    <p>{rtlActive ? prop.rtlName : prop.name}</p>
+                  </NavLink>
+                </li>
+              );
+            })}
+          </Nav>
+        </div>
+      </motion.div>
     );
   }
 }
@@ -160,7 +156,7 @@ class Menubar extends React.Component {
 Menubar.defaultProps = {
   rtlActive: false,
   bgColor: "primary",
-  routes: [{}]
+  routes: [{}],
 };
 
 Menubar.propTypes = {
@@ -179,8 +175,8 @@ Menubar.propTypes = {
     // the text of the logo
     text: PropTypes.node,
     // the image src of the logo
-    imgSrc: PropTypes.string
-  })
+    imgSrc: PropTypes.string,
+  }),
 };
 
 export default Menubar;
