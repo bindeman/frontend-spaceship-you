@@ -120,6 +120,30 @@ class Dashboard extends React.Component {
             initial="initial" animate="in" exit="out" variants={animations.pageVariants} transition={animations.pageTransition}
             className="content">
 
+
+
+
+
+          <Row>
+            <Col xs="12">
+              <div class={"hero-header"}>
+
+              <img className="hero-logo"src="https://i.ibb.co/Ms0rkCS/Screen-Shot-2020-09-12-at-11-49-29-AM.png"></img>
+              <h2>Welcome to your Spaceship</h2>
+                <p>Quarantine can managing life harder. Use Spaceship You to keep track of Sleep, work, and relaxation through our four sections. Based of the YouTube video by CGP Grey.</p>
+              <Button
+                  block
+                  color="primary"
+                  onClick={() => this.notify("tc")}
+              >
+                Watch the video
+              </Button>
+                </div>
+            </Col>
+          </Row>
+
+
+
           <Row>
             <Col xs="12">
               <Card className="card-chart">
