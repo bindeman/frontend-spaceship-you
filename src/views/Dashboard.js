@@ -23,6 +23,7 @@ import Timer from "react-compound-timer";
 import { Line, Bar } from "react-chartjs-2";
 import animations from "animations.js";
 import { motion } from "framer-motion";
+import Charts from 'chart.js'
 // reactstrap components
 import {
   Button,
@@ -55,8 +56,53 @@ import {
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
+
+    let chartTemplate = chartExample1['data1'];
+    console.log(chartTemplate);
+    //chartTemplate.datasets.data = [9, 2, 1, 3, 4, 9, 9, 8, 9, 3, 1, 3];
     this.state = {
-      bigChartData: "data1"
+      bigChartData: "data1",
+      chartTemplate: chartExample1['data1'],
+      mentalData: [4, 5, 8, 5, 4, 9, 9, 8, 9, 3, 1, 3],
+      mentalLabels: [4, 5, 8, 5, 4, 9, 9, 8, 9, 3, 1, 3],
+      data2: {
+          labels: [
+            "JAN",
+            "FEB",
+            "MAR",
+            "APR",
+            "MAY",
+            "JUN",
+            "JUL",
+            "AUG",
+            "SEP",
+            "OCT",
+            "NOV",
+            "DEC"
+          ],
+          datasets: [
+            {
+              label: "My First dataset",
+              fill: true,
+              backgroundColor: "none",
+              borderColor: "#1f8ef1",
+              borderWidth: 2,
+              borderDash: [],
+              borderDashOffset: 0.0,
+              pointBackgroundColor: "#1f8ef1",
+              pointBorderColor: "rgba(255,255,255,0)",
+              pointHoverBackgroundColor: "#1f8ef1",
+              pointBorderWidth: 20,
+              pointHoverRadius: 4,
+              pointHoverBorderWidth: 15,
+              pointRadius: 4,
+              data: [4, 5, 8, 5, 4, 9, 9, 8, 9, 3, 1, 3]
+            }
+          ]
+        },
+
+
+
     };
   }
   setBgChartData = name => {
@@ -85,19 +131,7 @@ class Dashboard extends React.Component {
                         Physical Health
                       </h5>
                       <CardTitle tag="h2">
-                        <Timer
-                          initialTime={ 9000 * 60 * 48 + 5000}
-                          lastUnit="h"
-                          direction="backward"
-                      >
-                        {() => (
-                            <React.Fragment>
-                              <Timer.Hours />:
-                              <Timer.Minutes />:
-                              <Timer.Seconds />
-                            </React.Fragment>
-                        )}
-                      </Timer>
+                        {chartExample1[this.state.bigChartData]}
                       </CardTitle>
                     </Col>
                     <Col sm="6">
@@ -179,7 +213,7 @@ class Dashboard extends React.Component {
                 <CardBody>
                   <div className="chart-area">
                     <Line
-                      data={chartExample1[this.state.bigChartData]}
+                      data={this.state.chartTemplate}
                       options={chartExample1.options}
                     />
                   </div>

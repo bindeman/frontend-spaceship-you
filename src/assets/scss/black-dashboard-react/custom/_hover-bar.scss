@@ -91,6 +91,7 @@
           line-height: 20px;
           width: 26px;
         }
+
       }
     }
 
@@ -134,11 +135,12 @@
   }
 
   .nav{
-    //margin-top: 20px;
+    margin-top: -6px;
     display: inline-flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    gap: 22px;
+    gap: 18.6px;
+    margin-bottom: 0px;
 
     .caret{
       top: 14px;
@@ -162,7 +164,7 @@
         display: block;
         text-decoration: none;
         position: relative;
-        text-transform: uppercase;
+        text-transform: capitalize;
         cursor: pointer;
         font-size: $font-size-xs;
         padding: 10px 8px 15px 20px;
@@ -178,12 +180,14 @@
       &:focus:not(.active) > a{
         p,i{
           color: $white;
+          font-weight: 600;
         }
       }
 
       &:hover:not(.active) > a i,
       &:focus:not(.active) > a i{
         color: $white;
+        font-weight: 600;
       }
 
       &.active > a:not([data-toggle="collapse"]){
@@ -191,6 +195,7 @@
 
         i,p{
           color: white;
+          font-weight: 600;
         }
 
         &:before{
@@ -250,6 +255,8 @@
     p{
       margin: 0;
       line-height: 30px;
+      font-weight: 600;
+      font-size: 11px;
       position: relative;
       display: block;
       height: auto;

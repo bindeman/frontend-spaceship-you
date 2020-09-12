@@ -895,7 +895,7 @@ $card-border-color:                 rgba($black, .05);
 $card-inner-border-radius:          calc(#{$card-border-radius} - #{$card-border-width});
 $card-cap-bg:                       $gray-100 !default;
 $card-bg:                           $white !default;
-$card-black-background:             rgba(39, 41, 61, 0.70) !default;
+$card-black-background:             #171717 !default;
 $card-img-overlay-padding:          1.25rem !default;
 
 //$card-group-margin:                 ($grid-gutter-width / 2);
