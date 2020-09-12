@@ -82,21 +82,21 @@ let chartExample1 = {
     gradientStroke.addColorStop(1, "rgba(29,140,248,0.2)");
     gradientStroke.addColorStop(0.4, "rgba(29,140,248,0.0)");
     gradientStroke.addColorStop(0, "rgba(29,140,248,0)"); //blue colors
-
+//TODO generate month and day data
     return {
       labels: [
-        "JAN",
-        "FEB",
-        "MAR",
-        "APR",
-        "MAY",
-        "JUN",
-        "JUL",
-        "AUG",
-        "SEP",
-        "OCT",
-        "NOV",
-        "DEC"
+        "SEP 12",
+        "SEP 11",
+        "SEP 10",
+        "SEP 9",
+        "SEP 8",
+        "SEP 7",
+        "SEP 6",
+        "SEP 5",
+        "SEP 4",
+        "SEP 3",
+        "SEP 2",
+        "SEP 1"
       ],
       datasets: [
         {
@@ -114,7 +114,7 @@ let chartExample1 = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100]
+          data: [8, 7, 9, 3, 6, 7, 5, 10, 6, 7, 8, 5]
         }
       ]
     };
@@ -130,18 +130,18 @@ let chartExample1 = {
 
     return {
       labels: [
-        "JAN",
-        "FEB",
-        "MAR",
-        "APR",
-        "MAY",
-        "JUN",
-        "JUL",
-        "AUG",
-        "SEP",
-        "OCT",
-        "NOV",
-        "DEC"
+        "SEP 12",
+        "SEP 11",
+        "SEP 10",
+        "SEP 9",
+        "SEP 8",
+        "SEP 7",
+        "SEP 6",
+        "SEP 5",
+        "SEP 4",
+        "SEP 3",
+        "SEP 2",
+        "SEP 1"
       ],
       datasets: [
         {
@@ -175,18 +175,18 @@ let chartExample1 = {
 
     return {
       labels: [
-        "JAN",
-        "FEB",
-        "MAR",
-        "APR",
-        "MAY",
-        "JUN",
-        "JUL",
-        "AUG",
-        "SEP",
-        "OCT",
-        "NOV",
-        "DEC"
+        "SEP 12",
+        "SEP 11",
+        "SEP 10",
+        "SEP 9",
+        "SEP 8",
+        "SEP 7",
+        "SEP 6",
+        "SEP 5",
+        "SEP 4",
+        "SEP 3",
+        "SEP 2",
+        "SEP 1"
       ],
       datasets: [
         {
@@ -226,7 +226,7 @@ let chartExample2 = {
     gradientStroke.addColorStop(0, "rgba(29,140,248,0)"); //blue colors
 
     return {
-      labels: ["JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
+      labels: ["SEP 12", "SEP 11", "SEP 10", "SEP 9", "SEP 8", "SEP 7"],
       datasets: [
         {
           label: "Data",
@@ -265,7 +265,7 @@ let chartExample3 = {
     gradientStroke.addColorStop(0, "rgba(119,52,169,0)"); //purple colors
 
     return {
-      labels: ["USA", "GER", "AUS", "UK", "RO", "BR"],
+      labels: ["SEP 12", "SEP 11", "SEP 10", "SEP 9", "SEP 8", "SEP 7"],
       datasets: [
         {
           label: "Countries",
@@ -306,8 +306,8 @@ let chartExample3 = {
             zeroLineColor: "transparent"
           },
           ticks: {
-            suggestedMin: 60,
-            suggestedMax: 120,
+            suggestedMin: 0,
+            suggestedMax: 10,
             padding: 20,
             fontColor: "#9e9e9e"
           }
@@ -344,7 +344,7 @@ const chartExample4 = {
     gradientStroke.addColorStop(0, "rgba(66,134,121,0)"); //green colors
 
     return {
-      labels: ["JUL", "AUG", "SEP", "OCT", "NOV"],
+      labels: ["SEP 12", "SEP 11", "SEP 10", "SEP 9", "SEP 8"],
       datasets: [
         {
           label: "My First dataset",

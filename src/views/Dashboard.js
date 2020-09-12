@@ -66,6 +66,8 @@ class Dashboard extends React.Component {
       chartTemplate: chartExample1['data1'],
       mentalData: [4, 5, 8, 5, 4, 9, 9, 8, 9, 3, 1, 3],
       mentalLabels: [4, 5, 8, 5, 4, 9, 9, 8, 9, 3, 1, 3],
+      physicalSlider: 5,
+      mentalSlider: 5,
       data2: {
           labels: [
             "JAN",
@@ -106,6 +108,13 @@ class Dashboard extends React.Component {
 
     };
   }
+
+
+
+  onChange = (event, newValue) => {
+    this.setState({ mentalSlider: newValue });
+  };
+
   setBgChartData = name => {
     this.setState({
       bigChartData: name
@@ -143,59 +152,109 @@ class Dashboard extends React.Component {
             </Col>
           </Row>
 
+
+
+
+
+
+
+
+          {/*<Row>*/}
+          {/*<Col xs="12">*/}
+          {/*  <Card className="card-chart">*/}
+
+          {/*    <CardBody>*/}
+          {/*      <Row>*/}
+          {/*      <Col xs="3">*/}
+          {/*        <CardHeader>*/}
+          {/*          <h5 className="card-category">Wellness</h5>*/}
+
+
+          {/*        <CardTitle tag="h2">*/}
+          {/*          How are you feeling today?*/}
+          {/*        </CardTitle>*/}
+          {/*          <p>Mark the way you are feeling with these sliders. Keep track of the way you're feeling through these sliders.</p>*/}
+          {/*        </CardHeader>*/}
+          {/*      </Col>*/}
+          {/*        <Col xs="3">*/}
+
+          {/*        </Col>*/}
+
+
+          {/*      </Row>*/}
+          {/*      <Row>*/}
+          {/*        <Col xs="6">*/}
+          {/*          <Typography id="discrete-slider" gutterBottom>*/}
+          {/*            Physical Wellness*/}
+          {/*          </Typography>*/}
+          {/*          <Slider*/}
+          {/*              defaultValue={5}*/}
+          {/*              orientation="vertical"*/}
+          {/*              aria-labelledby="discrete-slider"*/}
+          {/*              valueLabelDisplay="auto"*/}
+          {/*              step={1}*/}
+          {/*              marks*/}
+          {/*              min={1}*/}
+          {/*              max={10}*/}
+          {/*          />*/}
+
+
+          {/*          <Typography id="discrete-slider" gutterBottom>*/}
+          {/*            Mental Wellness*/}
+          {/*          </Typography>*/}
+          {/*          <Slider*/}
+          {/*              defaultValue={5}*/}
+          {/*              aria-labelledby="discrete-slider"*/}
+          {/*              orientation="vertical"*/}
+          {/*              valueLabelDisplay="auto"*/}
+          {/*              step={1}*/}
+          {/*              marks*/}
+          {/*              min={1}*/}
+          {/*              max={10}*/}
+          {/*          />*/}
+
+          {/*        </Col>*/}
+
+          {/*      </Row>*/}
+          {/*    </CardBody>*/}
+          {/*  </Card>*/}
+          {/*</Col>*/}
+          {/*</Row>*/}
+
+
+
           <Row>
-          <Col xs="12">
-            <Card className="card-chart">
-
-              <CardBody>
-                <Row>
-                <Col xs="3">
-                  <CardHeader>
-                    <h5 className="card-category">Wellness</h5>
-
-                  <CardTitle tag="h2">
-                    How are you feeling today?
+            <Col lg="1">
+              <Card className="card-chart">
+                <CardHeader>
+                  <h5 className="card-category">Physical</h5>
+                  <CardTitle tag="h3">
+                    {this.state.mentalSlider}
                   </CardTitle>
-                  </CardHeader>
-                </Col>
-                  <Col xs="3">
-
-                  </Col>
-                <Col xs="6">
-                  <Typography id="discrete-slider" gutterBottom>
-                    Physical Wellness
-                  </Typography>
-                  <Slider
-                      defaultValue={5}
-                      aria-labelledby="discrete-slider"
-                      valueLabelDisplay="auto"
-                      step={1}
-                      marks
-                      min={1}
-                      max={10}
-                  />
-
-
-                  <Typography id="discrete-slider" gutterBottom>
-                    Mental Wellness
-                  </Typography>
-                  <Slider
-                      defaultValue={5}
-                      aria-labelledby="discrete-slider"
-                      valueLabelDisplay="auto"
-                      step={1}
-                      marks
-                      min={1}
-                      max={10}
-                  />
-
-                </Col>
-
-                </Row>
-              </CardBody>
-            </Card>
-          </Col>
+                </CardHeader>
+                <CardBody>
+                  <Row>
+                    <Col ws={"1"}>
+                      <Slider
+                          defaultValue={5}
+                          //value={this.state.mentalSlider}
+                          onChange={this.onChange}
+                          aria-labelledby="discrete-slider"
+                          orientation="vertical"
+                          valueLabelDisplay="auto"
+                          step={1}
+                          marks
+                          min={1}
+                          max={10}
+                          style={{height: '150px', marginLeft: "12px"}}
+                      />
+                    </Col>
+                  </Row>
+                </CardBody>
+              </Card>
+            </Col>
           </Row>
+
 
           <Row>
             <Col xs="12">
@@ -208,7 +267,7 @@ class Dashboard extends React.Component {
                         Physical Health
                       </h5>
                       <CardTitle tag="h2">
-                        {chartExample1[this.state.bigChartData]}
+                        7.92
                       </CardTitle>
                     </Col>
                     <Col sm="6">
@@ -233,32 +292,10 @@ class Dashboard extends React.Component {
                             type="radio"
                           />
                           <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                            Accounts
+                            Physical
                           </span>
                           <span className="d-block d-sm-none">
                             <i className="tim-icons icon-single-02" />
-                          </span>
-                        </Button>
-                        <Button
-                          color="info"
-                          id="1"
-                          size="sm"
-                          tag="label"
-                          className={classNames("btn-simple", {
-                            aoutctive: this.state.bigChartData === "data2"
-                          })}
-                          onClick={() => this.setBgChartData("data2")}
-                        >
-                          <input
-                            className="d-none"
-                            name="options"
-                            type="radio"
-                          />
-                          <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                            Purchases
-                          </span>
-                          <span className="d-block d-sm-none">
-                            <i className="tim-icons icon-gift-2" />
                           </span>
                         </Button>
                         <Button
@@ -277,7 +314,7 @@ class Dashboard extends React.Component {
                             type="radio"
                           />
                           <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                            Sessions
+                            Mental
                           </span>
                           <span className="d-block d-sm-none">
                             <i className="tim-icons icon-tap-02" />
@@ -344,10 +381,10 @@ class Dashboard extends React.Component {
             <Col lg="4">
               <Card className="card-chart">
                 <CardHeader>
-                  <h5 className="card-category">Workouts Completed</h5>
+                  <h5 className="card-category">Time Spent Working Out</h5>
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-user-run text-info" />{" "}
-                    763,215
+                    263 minutes
                   </CardTitle>
                 </CardHeader>
                 <CardBody>
@@ -366,7 +403,7 @@ class Dashboard extends React.Component {
                   <h5 className="card-category">Hours Slept</h5>
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-time-alarm text-primary" />{" "}
-                    3,500€
+                    7.24 hours
                   </CardTitle>
                 </CardHeader>
                 <CardBody>
