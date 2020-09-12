@@ -111,8 +111,12 @@ class Dashboard extends React.Component {
 
 
 
-  onChange = (event, newValue) => {
+  onChangeMental = (event, newValue) => {
     this.setState({ mentalSlider: newValue });
+  };
+
+  onChangePhysical = (event, newValue) => {
+    this.setState({ physicalSlider: newValue });
   };
 
   setBgChartData = name => {
@@ -240,8 +244,8 @@ class Dashboard extends React.Component {
                     <Col ws={"1"}>
                       <Slider
                           defaultValue={5}
-                          //value={this.state.mentalSlider}
-                          onChange={this.onChange}
+                          value={this.state.mentalSlider}
+                          onChange={this.onChangeMental}
                           aria-labelledby="discrete-slider"
                           orientation="vertical"
                           valueLabelDisplay="auto"
@@ -341,7 +345,7 @@ class Dashboard extends React.Component {
               <Card className="card-chart">
                 <CardHeader>
                   <CardTitle tag="h3">
-                    {this.state.mentalSlider}
+                    {this.state.physicalSlider}
                   </CardTitle>
                   <h5 style={{fontSize: '10.5px', marginTop: '-12px', marginBottom: '20px'}} className="card-category">Physical</h5>
 
@@ -351,8 +355,8 @@ class Dashboard extends React.Component {
                     <Col ws={"1"}>
                       <Slider
                           defaultValue={5}
-                          //value={this.state.mentalSlider}
-                          onChange={this.onChange}
+                          value={this.state.physicalSlider}
+                          onChange={this.onChangePhysical}
                           aria-labelledby="discrete-slider"
                           orientation="vertical"
                           valueLabelDisplay="auto"
