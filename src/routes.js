@@ -35,7 +35,7 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/icons",
+    path: "/couch",
     name: "Couch",
     rtlName: "الرموز",
     icon: "tim-icons icon-tv-2",
@@ -43,7 +43,7 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/notifications",
+    path: "/workout",
     name: "Workout",
     rtlName: "خرائط",
     icon: "tim-icons icon-user-run",
@@ -51,7 +51,7 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/map",
+    path: "/sleep",
     name: "Sleep",
     rtlName: "إخطارات",
     icon: "tim-icons icon-time-alarm",
@@ -59,7 +59,7 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/user-profile",
+    path: "/creative",
     name: "Creative",
     rtlName: "ملف تعريفي للمستخدم",
     icon: "tim-icons icon-palette",
