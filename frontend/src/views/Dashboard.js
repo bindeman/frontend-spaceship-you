@@ -203,9 +203,15 @@ class Dashboard extends React.Component {
                   through our four sections. Based of the YouTube video by CGP
                   Grey.
                 </p>
-                <Button block color="primary" onClick={() => this.notify("tc")}>
+                <a
+                  className="btn btn-primary btn-block"
+                  style={{ marginTop: 40 }}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.youtube.com/watch?v=snAhsXyO3Ck"
+                >
                   Watch the video
-                </Button>
+                </a>
               </div>
             </Col>
           </Row>
