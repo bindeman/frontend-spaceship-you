@@ -20,7 +20,7 @@ import React from "react";
 import classNames from "classnames";
 import Timer from "react-compound-timer";
 // react plugin used to create charts
-import { Line, Bar } from "react-chartjs-2";
+import { Line, Bar, Doughnut } from "react-chartjs-2";
 import animations from "animations.js";
 import { motion } from "framer-motion";
 import { Typography, Slider } from "@material-ui/core";
@@ -63,7 +63,7 @@ class Dashboard extends React.Component {
     //chartTemplate.datasets.data = [9, 2, 1, 3, 4, 9, 9, 8, 9, 3, 1, 3];
     this.state = {
       bigChartData: "data1",
-      chartTemplate: chartExample1['data1'],
+      chartTemplate: chartExample1['data2'],
       mentalData: [4, 5, 8, 5, 4, 9, 9, 8, 9, 3, 1, 3],
       mentalLabels: [4, 5, 8, 5, 4, 9, 9, 8, 9, 3, 1, 3],
       physicalSlider: 5,
@@ -226,7 +226,33 @@ class Dashboard extends React.Component {
           {/*</Row>*/}
 
 
+          <Row>
+            <Col xs="12">
+              <Card className="card-chart">
+                <CardHeader>
+                  <Row>
+                    <Col className="text-left" sm="6">
 
+                      <h5 className="card-category">
+                        Time
+                      </h5>
+                      <CardTitle tag="h3">
+                        Distribution
+                      </CardTitle>
+                    </Col>
+                  </Row>
+                </CardHeader>
+                <CardBody>
+                  <div className="chart-area">
+                    <Doughnut
+                        data={this.state.chartTemplate}
+                        options={this.state.chartTemplate.options}
+                    />
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
           <Row>
 
 
