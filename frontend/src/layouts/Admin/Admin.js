@@ -25,13 +25,12 @@ import AdminNavbar from "components/Navbars/AdminNavbar.js";
 import Footer from "components/Footer/Footer.js";
 import Menubar from "components/Sidebar/Menubar.js";
 
-
 import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
 import routes from "routes.js";
 
 import logo from "assets/img/react-logo.png";
-import {AnimatePresence} from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 var ps;
 //const location = useLocation();
 class Admin extends React.Component {
@@ -40,7 +39,7 @@ class Admin extends React.Component {
     this.state = {
       backgroundColor: "blue",
       sidebarOpened:
-        document.documentElement.className.indexOf("nav-open") !== -1
+        document.documentElement.className.indexOf("nav-open") !== -1,
     };
   }
   componentDidMount() {
@@ -75,7 +74,7 @@ class Admin extends React.Component {
     }
   }
   // this function opens and closes the sidebar on small devices
-  getRoutes = routes => {
+  getRoutes = (routes) => {
     return routes.map((prop, key) => {
       if (prop.layout === "/admin") {
         return (
@@ -90,10 +89,10 @@ class Admin extends React.Component {
       }
     });
   };
-  handleBgClick = color => {
+  handleBgClick = (color) => {
     this.setState({ backgroundColor: color });
   };
-  getBrandText = path => {
+  getBrandText = (path) => {
     for (let i = 0; i < routes.length; i++) {
       if (
         this.props.location.pathname.indexOf(
@@ -108,10 +107,8 @@ class Admin extends React.Component {
   render() {
     return (
       <>
-
         <div className="wrapper">
-
-        <AnimatePresence initial={true}>
+          {/* <AnimatePresence initial={true}>
           <Menubar
               {...this.props}
               routes={routes}
@@ -123,9 +120,8 @@ class Admin extends React.Component {
               }}
               toggleSidebar={this.toggleSidebar}
           />
-      </AnimatePresence>
+      </AnimatePresence> */}
           <div
-
             className="main-panel"
             ref="mainPanel"
             data={this.state.backgroundColor}
@@ -137,16 +133,21 @@ class Admin extends React.Component {
               sidebarOpened={this.state.sidebarOpened}
             />
             <AnimatePresence exitBeforeEnter initial={true}>
-            <Switch location={this.props.location} key={this.props.location.pathname}>
-              {this.getRoutes(routes)}
-              <Redirect from="*" to="/admin/dashboard"/>
-            </Switch>
+              <Switch
+                location={this.props.location}
+                key={this.props.location.pathname}
+              >
+                {this.getRoutes(routes)}
+                <Redirect from="*" to="/admin/dashboard" />
+              </Switch>
             </AnimatePresence>
 
-            {// we don't want the Footer to be rendered on map page
-            this.props.location.pathname.indexOf("maps") !== -1 ? null : (
-              <Footer fluid />
-            )}
+            {
+              // we don't want the Footer to be rendered on map page
+              this.props.location.pathname.indexOf("maps") !== -1 ? null : (
+                <Footer fluid />
+              )
+            }
           </div>
         </div>
       </>

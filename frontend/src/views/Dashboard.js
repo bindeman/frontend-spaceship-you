@@ -24,6 +24,7 @@ import { Line, Bar, Doughnut, Pie } from "react-chartjs-2";
 import animations from "animations.js";
 import { motion } from "framer-motion";
 import { Typography, Slider } from "@material-ui/core";
+import NotificationAlert from "react-notification-alert";
 // reactstrap components
 import {
   Button,
@@ -51,7 +52,7 @@ import {
   chartExample2,
   chartExample3,
   chartExample4,
-    radialChart
+  radialChart,
 } from "variables/charts.js";
 import moment from "moment";
 import Chart from "./Chart";
@@ -70,8 +71,11 @@ class Dashboard extends React.Component {
       mentalLabels: [4, 5, 8, 5, 4, 9, 9, 8, 9, 3, 1, 3],
       physicalSlider: 5,
       sleepSlider: 5,
-      sleepDate: '5:00',
+      sleepDate: "5:00",
       mentalSlider: 5,
+      sleeping: false,
+      sleepTime: new Date("2020-09-13T06:30:00Z"),
+      wakeTime: new Date("2020-09-13T14:30:00Z"),
       data2: {
         labels: [
           "JAN",
@@ -110,6 +114,49 @@ class Dashboard extends React.Component {
     };
   }
 
+  notify = () => {
+    var color = Math.floor(Math.random() * 5 + 1);
+    var type;
+    switch (color) {
+      case 1:
+        type = "primary";
+        break;
+      case 2:
+        type = "success";
+        break;
+      case 3:
+        type = "danger";
+        break;
+      case 4:
+        type = "warning";
+        break;
+      case 5:
+        type = "info";
+        break;
+      default:
+        break;
+    }
+    var options = {};
+    options = {
+      place: "tc",
+      message: (
+        <div>
+          <b>Time to sleep</b> - it's almost time to sleep. You have 1 hour
+          before bedtime.
+        </div>
+      ),
+      type: "info",
+      icon: "tim-icons icon-watch-time",
+      autoDismiss: 7,
+    };
+    this.refs.notificationAlert.notificationAlert(options);
+  };
+
+  toggleSleep(event) {
+    const sleeping = this.state.sleeping;
+    this.setState({ sleeping: !sleeping });
+  }
+
   onChangeMental = (event, newValue) => {
     this.setState({ mentalSlider: newValue });
   };
@@ -119,10 +166,11 @@ class Dashboard extends React.Component {
   };
 
   onChangeSleep = (event, newValue) => {
-    let convertedSleep = moment.utc(moment.duration(newValue, "hours").asMilliseconds()).format("H:mm");
-    this.setState({ sleepSlider: newValue, sleepDate: convertedSleep});
+    let convertedSleep = moment
+      .utc(moment.duration(newValue, "hours").asMilliseconds())
+      .format("H:mm");
+    this.setState({ sleepSlider: newValue, sleepDate: convertedSleep });
   };
-
 
   setBgChartData = (name) => {
     this.setState({
@@ -174,9 +222,7 @@ class Dashboard extends React.Component {
                   </Row>
                 </CardHeader>
                 <CardBody>
-
                   <div className="chart-radial">
-
                     <Pie
                       data={radialChart["timeDist"]}
                       options={radialChart.options}
@@ -186,44 +232,42 @@ class Dashboard extends React.Component {
               </Card>
             </Col>
             <Col xs="2">
-
               <Card className="card-chart">
                 <CardHeader>
                   <Row>
                     <Col className="text-left" sm="6">
-                      <CardTitle tag="h3">{this.state.sleepDate} hours</CardTitle>
+                      <CardTitle tag="h3">
+                        {this.state.sleepDate} hours
+                      </CardTitle>
                       <h5
-                          style={{
-                            marginTop: "-12px",
-                            marginBottom: "20px",
-                          }}
-                          className="card-category"
+                        style={{
+                          marginTop: "-12px",
+                          marginBottom: "20px",
+                        }}
+                        className="card-category"
                       >
                         Sleep
                       </h5>
-
                     </Col>
                   </Row>
                 </CardHeader>
                 <CardBody>
                   <Slider
-                      defaultValue={5}
-                      value={this.state.sleepSlider}
-                      onChange={this.onChangeSleep}
-                      aria-labelledby="discrete-slider"
-                      orientation="vertical"
-                      valueLabelDisplay="auto"
-                      step={0.01}
-                      min={1}
-                      max={10}
-                      style={{
-                        height: "220px",
-                        margin: "auto",
-                        display: "block",
-                      }}
+                    defaultValue={5}
+                    value={this.state.sleepSlider}
+                    onChange={this.onChangeSleep}
+                    aria-labelledby="discrete-slider"
+                    orientation="vertical"
+                    valueLabelDisplay="auto"
+                    step={0.01}
+                    min={1}
+                    max={10}
+                    style={{
+                      height: "220px",
+                      margin: "auto",
+                      display: "block",
+                    }}
                   />
-
-
                 </CardBody>
               </Card>
             </Col>
@@ -233,39 +277,38 @@ class Dashboard extends React.Component {
                 <CardHeader>
                   <Row>
                     <Col className="text-left" sm="6">
-                      <CardTitle tag="h3">{this.state.sleepDate} hours</CardTitle>
+                      <CardTitle tag="h3">
+                        {this.state.sleepDate} hours
+                      </CardTitle>
                       <h5
-                          style={{
-                            marginTop: "-12px",
-                            marginBottom: "20px",
-                          }}
-                          className="card-category"
+                        style={{
+                          marginTop: "-12px",
+                          marginBottom: "20px",
+                        }}
+                        className="card-category"
                       >
                         Workout
                       </h5>
-
                     </Col>
                   </Row>
                 </CardHeader>
                 <CardBody>
                   <Slider
-                      defaultValue={5}
-                      value={this.state.sleepSlider}
-                      onChange={this.onChangeSleep}
-                      aria-labelledby="discrete-slider"
-                      orientation="vertical"
-                      valueLabelDisplay="auto"
-                      step={0.01}
-                      min={1}
-                      max={10}
-                      style={{
-                        height: "220px",
-                        margin: "auto",
-                        display: "block",
-                      }}
+                    defaultValue={5}
+                    value={this.state.sleepSlider}
+                    onChange={this.onChangeSleep}
+                    aria-labelledby="discrete-slider"
+                    orientation="vertical"
+                    valueLabelDisplay="auto"
+                    step={0.01}
+                    min={1}
+                    max={10}
+                    style={{
+                      height: "220px",
+                      margin: "auto",
+                      display: "block",
+                    }}
                   />
-
-
                 </CardBody>
               </Card>
             </Col>
@@ -275,39 +318,38 @@ class Dashboard extends React.Component {
                 <CardHeader>
                   <Row>
                     <Col className="text-left" sm="6">
-                      <CardTitle tag="h3">{this.state.sleepDate} hours</CardTitle>
+                      <CardTitle tag="h3">
+                        {this.state.sleepDate} hours
+                      </CardTitle>
                       <h5
-                          style={{
-                            marginTop: "-12px",
-                            marginBottom: "20px",
-                          }}
-                          className="card-category"
+                        style={{
+                          marginTop: "-12px",
+                          marginBottom: "20px",
+                        }}
+                        className="card-category"
                       >
                         Couch
                       </h5>
-
                     </Col>
                   </Row>
                 </CardHeader>
                 <CardBody>
                   <Slider
-                      defaultValue={5}
-                      value={this.state.sleepSlider}
-                      onChange={this.onChangeSleep}
-                      aria-labelledby="discrete-slider"
-                      orientation="vertical"
-                      valueLabelDisplay="auto"
-                      step={0.01}
-                      min={1}
-                      max={10}
-                      style={{
-                        height: "220px",
-                        margin: "auto",
-                        display: "block",
-                      }}
+                    defaultValue={5}
+                    value={this.state.sleepSlider}
+                    onChange={this.onChangeSleep}
+                    aria-labelledby="discrete-slider"
+                    orientation="vertical"
+                    valueLabelDisplay="auto"
+                    step={0.01}
+                    min={1}
+                    max={10}
+                    style={{
+                      height: "220px",
+                      margin: "auto",
+                      display: "block",
+                    }}
                   />
-
-
                 </CardBody>
               </Card>
             </Col>
@@ -317,44 +359,41 @@ class Dashboard extends React.Component {
                 <CardHeader>
                   <Row>
                     <Col className="text-left" sm="6">
-                      <CardTitle tag="h3">{this.state.sleepDate} hours</CardTitle>
+                      <CardTitle tag="h3">
+                        {this.state.sleepDate} hours
+                      </CardTitle>
                       <h5
-                          style={{
-                            marginTop: "-12px",
-                            marginBottom: "20px",
-                          }}
-                          className="card-category"
+                        style={{
+                          marginTop: "-12px",
+                          marginBottom: "20px",
+                        }}
+                        className="card-category"
                       >
                         Creative
                       </h5>
-
                     </Col>
                   </Row>
                 </CardHeader>
                 <CardBody>
                   <Slider
-                      defaultValue={5}
-                      value={this.state.sleepSlider}
-                      onChange={this.onChangeSleep}
-                      aria-labelledby="discrete-slider"
-                      orientation="vertical"
-                      valueLabelDisplay="auto"
-                      step={0.01}
-                      min={1}
-                      max={10}
-                      style={{
-                        height: "220px",
-                        margin: "auto",
-                        display: "block",
-                      }}
+                    defaultValue={5}
+                    value={this.state.sleepSlider}
+                    onChange={this.onChangeSleep}
+                    aria-labelledby="discrete-slider"
+                    orientation="vertical"
+                    valueLabelDisplay="auto"
+                    step={0.01}
+                    min={1}
+                    max={10}
+                    style={{
+                      height: "220px",
+                      margin: "auto",
+                      display: "block",
+                    }}
                   />
-
-
                 </CardBody>
               </Card>
             </Col>
-
-
           </Row>
           <Row>
             <Col lg="1">
@@ -362,16 +401,15 @@ class Dashboard extends React.Component {
                 <CardHeader>
                   <CardTitle tag="h3">{this.state.mentalSlider}</CardTitle>
                   <h5
-                      style={{
-                        fontSize: "10.5px",
-                        marginTop: "-12px",
-                        marginBottom: "20px",
-                      }}
-                      className="card-category"
+                    style={{
+                      fontSize: "10.5px",
+                      marginTop: "-12px",
+                      marginBottom: "20px",
+                    }}
+                    className="card-category"
                   >
                     Mental
                   </h5>
-
                 </CardHeader>
                 <CardBody>
                   <Row>
@@ -509,6 +547,128 @@ class Dashboard extends React.Component {
                       />
                     </Col>
                   </Row>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+
+          <div className="react-notification-alert-container">
+            <NotificationAlert ref="notificationAlert" />
+          </div>
+          <Row>
+            <Col lg="6">
+              <Card>
+                <CardHeader>
+                  <CardTitle tag="h3">
+                    <i className="tim-icons icon-time-alarm text-primary" />{" "}
+                    Sleep & Wake Hours
+                  </CardTitle>
+                </CardHeader>
+                <CardBody style={{ color: "white" }}>
+                  <Row className="alarm-display">
+                    <Col md="6">
+                      <p>Bedtime</p>
+                      <div className="sleep">
+                        {this.state.sleepTime.toLocaleTimeString("en-US", {
+                          hour: "numeric",
+                          minute: "2-digit",
+                        })}
+                      </div>
+                    </Col>
+                    <Col md="6">
+                      <p>Wake-Up</p>
+                      <div className="wake">
+                        {this.state.wakeTime.toLocaleTimeString("en-US", {
+                          hour: "numeric",
+                          minute: "2-digit",
+                        })}
+                      </div>
+                    </Col>
+                  </Row>
+                  <Timer
+                    initialTime={3610000}
+                    lastUnit="h"
+                    direction="backward"
+                    checkpoints={[
+                      { time: 3600000, callback: () => this.notify() },
+                    ]}
+                    className="time-till-bed"
+                  >
+                    {({ timerState }) => (
+                      <div className="time-till-bed">
+                        <strong>
+                          <Timer.Hours />
+                        </strong>{" "}
+                        hour(s) and{" "}
+                        <strong>
+                          <Timer.Minutes />
+                        </strong>{" "}
+                        minute(s) till bedtime
+                      </div>
+                    )}
+                  </Timer>
+                </CardBody>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle tag="h3">
+                    <strong>Can't sleep?</strong>
+                  </CardTitle>
+                </CardHeader>
+                <CardBody style={{ paddingTop: 0 }}>
+                  <div
+                    className="chart-area"
+                    style={{ margin: "0px 30px", width: "auto" }}
+                  >
+                    <div style={{ marginBottom: 10 }}>
+                      <i className="tim-icons icon-sound-wave text-primary" />{" "}
+                      <a href="https://www.youtube.com/watch?v=bn9F19Hi1Lk">
+                        <strong>
+                          Try putting on some ocean sounds to help you fall
+                          asleep.
+                        </strong>
+                      </a>
+                    </div>
+                    <div style={{ marginBottom: 10, color: "white" }}>
+                      <i className="tim-icons icon-user-run text-primary" /> Get
+                      up! Walk around. Read a book. Do something. Come back when
+                      you're tired.
+                    </div>
+                    {/* <blockquote className="blockquote text-center">
+                      <p>
+                        This is where you go to <strong>sleep</strong>, not to
+                        linger, worrying about why you can't.
+                      </p>
+                      <footer className="blockquote-footer">CGP Grey</footer>
+                    </blockquote> */}
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+            <Col lg="6">
+              <Button
+                block
+                color="primary"
+                onClick={() => this.toggleSleep()}
+                style={{ marginBottom: 30 }}
+              >
+                {!this.state.sleeping ? "I'm going to sleep" : "I'm waking up"}
+              </Button>
+              <Card className="card-chart">
+                <CardHeader>
+                  <h5 className="card-category">Hours Slept</h5>
+                  <CardTitle tag="h3">
+                    <i className="tim-icons icon-time-alarm text-primary" />{" "}
+                    <strong>7.24</strong> hours on average this week
+                  </CardTitle>
+                </CardHeader>
+                <CardBody>
+                  <div className="chart-area">
+                    <Bar
+                      data={chartExample3.data}
+                      options={chartExample3.options}
+                    />
+                  </div>
                 </CardBody>
               </Card>
             </Col>
