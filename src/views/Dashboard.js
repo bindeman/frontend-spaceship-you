@@ -358,6 +358,7 @@ class Dashboard extends React.Component {
             <Col lg="1">
               <Card className="card-chart">
                 <CardHeader>
+                  <CardTitle tag="h3">{this.state.mentalSlider}</CardTitle>
                   <h5
                       style={{
                         fontSize: "10.5px",
@@ -368,7 +369,7 @@ class Dashboard extends React.Component {
                   >
                     Mental
                   </h5>
-                  <CardTitle tag="h3">{this.state.mentalSlider}</CardTitle>
+
                 </CardHeader>
                 <CardBody>
                   <Row>
