@@ -19,6 +19,43 @@
 // // // Chart variables
 // #############################
 
+
+
+function generateChartArray(length) {
+  const shortMonth =
+      [ "JAN",
+        "FEB",
+        "MAR",
+        "APR",
+        "MAY",
+        "JUN",
+        "JUL",
+        "AUG",
+        "SEP",
+        "OCT",
+        "NOV",
+        "DEC"];
+
+    const d = new Date();
+    let dataLabels = [];
+    let month = d.getMonth();
+    let date = d.getDate();
+  for(let i = 0; i < length; i++) {
+    if(date - i === 0) {
+      month--;
+      date = 30; //TODO take into acccount different month lengths make months actually work
+    }
+    if(month < 0) month = 11;
+
+    dataLabels.push(`${shortMonth[month]} ${date-i}`)
+
+  }
+  return dataLabels
+}
+
+
+
+
 // chartExample1 and chartExample2 options
 let chart1_2_options = {
   maintainAspectRatio: false,
@@ -78,26 +115,13 @@ let chartExample1 = {
     let ctx = canvas.getContext("2d");
 
     let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
-
+    let monthLabels = generateChartArray(12);
     gradientStroke.addColorStop(1, "rgba(29,140,248,0.2)");
     gradientStroke.addColorStop(0.4, "rgba(29,140,248,0.0)");
     gradientStroke.addColorStop(0, "rgba(29,140,248,0)"); //blue colors
 //TODO generate month and day data
     return {
-      labels: [
-        "SEP 12",
-        "SEP 11",
-        "SEP 10",
-        "SEP 9",
-        "SEP 8",
-        "SEP 7",
-        "SEP 6",
-        "SEP 5",
-        "SEP 4",
-        "SEP 3",
-        "SEP 2",
-        "SEP 1"
-      ],
+      labels: monthLabels,
       datasets: [
         {
           label: "My First dataset",
