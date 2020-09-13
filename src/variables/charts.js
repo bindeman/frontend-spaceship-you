@@ -138,7 +138,7 @@ let chartExample1 = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: [8, 7, 9, 3, 6, 7, 5, 10, 6, 7, 8, 5]
+          data: [8, 7, 9, 3, 6, 7, 5, 10, 6, 7, 8, 5] //replace with api call
         }
       ]
     };
