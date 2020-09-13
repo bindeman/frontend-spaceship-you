@@ -216,7 +216,7 @@ class Dashboard extends React.Component {
             </Col>
           </Row>
 
-          <Row>
+          {/* <Row>
             <Col xs="4">
               <Card className="card-chart">
                 <CardHeader>
@@ -400,7 +400,7 @@ class Dashboard extends React.Component {
                 </CardBody>
               </Card>
             </Col>
-          </Row>
+          </Row> */}
           <Row>
             <Col lg="1">
               <Card className="card-chart">
