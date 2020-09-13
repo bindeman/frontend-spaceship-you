@@ -162,7 +162,7 @@ class Dashboard extends React.Component {
           </Row>
 
           <Row>
-            <Col xs="12">
+            <Col xs="4">
               <Card className="card-chart">
                 <CardHeader>
                   <Row>
@@ -173,8 +173,7 @@ class Dashboard extends React.Component {
                   </Row>
                 </CardHeader>
                 <CardBody>
-                  <Row>
-                  <Col xs="4">
+
                   <div className="chart-radial">
 
                     <Pie
@@ -182,9 +181,14 @@ class Dashboard extends React.Component {
                       options={radialChart.options}
                     />
                   </div>
-                    </Col>
-                    <Col xs='2'>
-                      <CardTitle tag="h3">{this.state.sleepDate} hours</CardTitle>
+                </CardBody>
+              </Card>
+            </Col>
+            <Col xs="2">
+              <Card className="card-chart">
+                <CardHeader>
+                  <Row>
+                    <Col className="text-left" sm="6">
                       <h5
                           style={{
                             marginTop: "-12px",
@@ -194,31 +198,157 @@ class Dashboard extends React.Component {
                       >
                         Sleep
                       </h5>
-                      <Slider
-                          defaultValue={5}
-                          value={this.state.sleepSlider}
-                          onChange={this.onChangeSleep}
-                          aria-labelledby="discrete-slider"
-                          orientation="vertical"
-                          valueLabelDisplay="auto"
-                          step={0.01}
-                          min={1}
-                          max={10}
-                          style={{
-                            height: "220px",
-                            margin: "auto",
-                            display: "block",
-                          }}
-                      />
-
-
+                      <CardTitle tag="h3">{this.state.sleepDate} hours</CardTitle>
                     </Col>
                   </Row>
+                </CardHeader>
+                <CardBody>
+                  <Slider
+                      defaultValue={5}
+                      value={this.state.sleepSlider}
+                      onChange={this.onChangeSleep}
+                      aria-labelledby="discrete-slider"
+                      orientation="vertical"
+                      valueLabelDisplay="auto"
+                      step={0.01}
+                      min={1}
+                      max={10}
+                      style={{
+                        height: "220px",
+                        margin: "auto",
+                        display: "block",
+                      }}
+                  />
 
 
                 </CardBody>
               </Card>
             </Col>
+
+            <Col xs="2">
+              <Card className="card-chart">
+                <CardHeader>
+                  <Row>
+                    <Col className="text-left" sm="6">
+                      <h5
+                          style={{
+                            marginTop: "-12px",
+                            marginBottom: "20px",
+                          }}
+                          className="card-category"
+                      >
+                        Workout
+                      </h5>
+                      <CardTitle tag="h3">{this.state.sleepDate} hours</CardTitle>
+                    </Col>
+                  </Row>
+                </CardHeader>
+                <CardBody>
+                  <Slider
+                      defaultValue={5}
+                      value={this.state.sleepSlider}
+                      onChange={this.onChangeSleep}
+                      aria-labelledby="discrete-slider"
+                      orientation="vertical"
+                      valueLabelDisplay="auto"
+                      step={0.01}
+                      min={1}
+                      max={10}
+                      style={{
+                        height: "220px",
+                        margin: "auto",
+                        display: "block",
+                      }}
+                  />
+
+
+                </CardBody>
+              </Card>
+            </Col>
+
+            <Col xs="2">
+              <Card className="card-chart">
+                <CardHeader>
+                  <Row>
+                    <Col className="text-left" sm="6">
+                      <h5
+                          style={{
+                            marginTop: "-12px",
+                            marginBottom: "20px",
+                          }}
+                          className="card-category"
+                      >
+                        Couch
+                      </h5>
+                      <CardTitle tag="h3">{this.state.sleepDate} hours</CardTitle>
+                    </Col>
+                  </Row>
+                </CardHeader>
+                <CardBody>
+                  <Slider
+                      defaultValue={5}
+                      value={this.state.sleepSlider}
+                      onChange={this.onChangeSleep}
+                      aria-labelledby="discrete-slider"
+                      orientation="vertical"
+                      valueLabelDisplay="auto"
+                      step={0.01}
+                      min={1}
+                      max={10}
+                      style={{
+                        height: "220px",
+                        margin: "auto",
+                        display: "block",
+                      }}
+                  />
+
+
+                </CardBody>
+              </Card>
+            </Col>
+
+            <Col xs="2">
+              <Card className="card-chart">
+                <CardHeader>
+                  <Row>
+                    <Col className="text-left" sm="6">
+                      <h5
+                          style={{
+                            marginTop: "-12px",
+                            marginBottom: "20px",
+                          }}
+                          className="card-category"
+                      >
+                        Creative
+                      </h5>
+                      <CardTitle tag="h3">{this.state.sleepDate} hours</CardTitle>
+                    </Col>
+                  </Row>
+                </CardHeader>
+                <CardBody>
+                  <Slider
+                      defaultValue={5}
+                      value={this.state.sleepSlider}
+                      onChange={this.onChangeSleep}
+                      aria-labelledby="discrete-slider"
+                      orientation="vertical"
+                      valueLabelDisplay="auto"
+                      step={0.01}
+                      min={1}
+                      max={10}
+                      style={{
+                        height: "220px",
+                        margin: "auto",
+                        display: "block",
+                      }}
+                  />
+
+
+                </CardBody>
+              </Card>
+            </Col>
+
+
           </Row>
           <Row>
             <Col lg="1">
