@@ -102,7 +102,7 @@ class Sleep extends React.Component {
             <NotificationAlert ref="notificationAlert" />
           </div>
           <Row>
-            <Col xs="6">
+            <Col md="6">
               <Card>
                 <CardHeader>
                   <CardTitle tag="h3">
@@ -112,7 +112,7 @@ class Sleep extends React.Component {
                 </CardHeader>
                 <CardBody style={{ color: "white" }}>
                   <Row className="alarm-display">
-                    <Col xs="6">
+                    <Col md="6">
                       <p>Bedtime</p>
                       <div className="sleep">
                         {this.state.sleepTime.toLocaleTimeString("en-US", {
@@ -121,7 +121,7 @@ class Sleep extends React.Component {
                         })}
                       </div>
                     </Col>
-                    <Col xs="6">
+                    <Col md="6">
                       <p>Wake-Up</p>
                       <div className="wake">
                         {this.state.wakeTime.toLocaleTimeString("en-US", {
@@ -166,32 +166,32 @@ class Sleep extends React.Component {
                     className="chart-area"
                     style={{ margin: "0px 30px", width: "auto" }}
                   >
-                    <ul>
-                      <li style={{ marginBottom: 10 }}>
-                        <a href="https://www.youtube.com/watch?v=bn9F19Hi1Lk">
-                          <strong>
-                            Try putting on some ocean sounds to help you fall
-                            asleep.
-                          </strong>
-                        </a>
-                      </li>
-                      <li style={{ marginBottom: 10 }}>
-                        Wake up! Walk around. Read a book. Do something around
-                        your place. Then come back.
-                      </li>
-                    </ul>
-                    <blockquote className="blockquote text-center">
+                    <div style={{ marginBottom: 10 }}>
+                      <i className="tim-icons icon-sound-wave text-primary" />{" "}
+                      <a href="https://www.youtube.com/watch?v=bn9F19Hi1Lk">
+                        <strong>
+                          Try putting on some ocean sounds to help you fall
+                          asleep.
+                        </strong>
+                      </a>
+                    </div>
+                    <div style={{ marginBottom: 10, color: "white" }}>
+                      <i className="tim-icons icon-user-run text-primary" /> Get
+                      up! Walk around. Read a book. Do something. Come back when
+                      you're tired.
+                    </div>
+                    {/* <blockquote className="blockquote text-center">
                       <p>
                         This is where you go to <strong>sleep</strong>, not to
                         linger, worrying about why you can't.
                       </p>
                       <footer className="blockquote-footer">CGP Grey</footer>
-                    </blockquote>
+                    </blockquote> */}
                   </div>
                 </CardBody>
               </Card>
             </Col>
-            <Col xs="6">
+            <Col md="6">
               <Button
                 block
                 color="primary"
