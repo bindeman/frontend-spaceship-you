@@ -113,7 +113,7 @@ class Chart extends React.Component {
               {
                 label: chartData.name,
                 fill: true,
-                backgroundColor: blue,
+                backgroundColor: "none",
                 borderColor: "#1f8ef1",
                 borderWidth: 2,
                 borderDash: [],
