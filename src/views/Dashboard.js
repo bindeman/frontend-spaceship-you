@@ -189,6 +189,7 @@ class Dashboard extends React.Component {
                 <CardHeader>
                   <Row>
                     <Col className="text-left" sm="6">
+                      <CardTitle tag="h3">{this.state.sleepDate} hours</CardTitle>
                       <h5
                           style={{
                             marginTop: "-12px",
@@ -198,7 +199,7 @@ class Dashboard extends React.Component {
                       >
                         Sleep
                       </h5>
-                      <CardTitle tag="h3">{this.state.sleepDate} hours</CardTitle>
+
                     </Col>
                   </Row>
                 </CardHeader>
@@ -230,6 +231,7 @@ class Dashboard extends React.Component {
                 <CardHeader>
                   <Row>
                     <Col className="text-left" sm="6">
+                      <CardTitle tag="h3">{this.state.sleepDate} hours</CardTitle>
                       <h5
                           style={{
                             marginTop: "-12px",
@@ -239,7 +241,7 @@ class Dashboard extends React.Component {
                       >
                         Workout
                       </h5>
-                      <CardTitle tag="h3">{this.state.sleepDate} hours</CardTitle>
+
                     </Col>
                   </Row>
                 </CardHeader>
@@ -271,6 +273,7 @@ class Dashboard extends React.Component {
                 <CardHeader>
                   <Row>
                     <Col className="text-left" sm="6">
+                      <CardTitle tag="h3">{this.state.sleepDate} hours</CardTitle>
                       <h5
                           style={{
                             marginTop: "-12px",
@@ -280,7 +283,7 @@ class Dashboard extends React.Component {
                       >
                         Couch
                       </h5>
-                      <CardTitle tag="h3">{this.state.sleepDate} hours</CardTitle>
+
                     </Col>
                   </Row>
                 </CardHeader>
@@ -312,6 +315,7 @@ class Dashboard extends React.Component {
                 <CardHeader>
                   <Row>
                     <Col className="text-left" sm="6">
+                      <CardTitle tag="h3">{this.state.sleepDate} hours</CardTitle>
                       <h5
                           style={{
                             marginTop: "-12px",
@@ -321,7 +325,7 @@ class Dashboard extends React.Component {
                       >
                         Creative
                       </h5>
-                      <CardTitle tag="h3">{this.state.sleepDate} hours</CardTitle>
+
                     </Col>
                   </Row>
                 </CardHeader>
@@ -354,17 +358,17 @@ class Dashboard extends React.Component {
             <Col lg="1">
               <Card className="card-chart">
                 <CardHeader>
-                  <CardTitle tag="h3">{this.state.mentalSlider}</CardTitle>
                   <h5
-                    style={{
-                      fontSize: "10.5px",
-                      marginTop: "-12px",
-                      marginBottom: "20px",
-                    }}
-                    className="card-category"
+                      style={{
+                        fontSize: "10.5px",
+                        marginTop: "-12px",
+                        marginBottom: "20px",
+                      }}
+                      className="card-category"
                   >
                     Mental
                   </h5>
+                  <CardTitle tag="h3">{this.state.mentalSlider}</CardTitle>
                 </CardHeader>
                 <CardBody>
                   <Row>
