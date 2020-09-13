@@ -105,6 +105,7 @@ let chart1_2_options = {
 
 let radialChartOptions = {
   maintainAspectRatio: false,
+
   legend: {
     display: false,
   },
@@ -129,7 +130,6 @@ let radialChartOptions = {
 let radialChart = {
   timeDist: (canvas) => {
     let ctx = canvas.getContext("2d");
-
     //let gradientStrokeBlue = ctx.createLinearGradient(, 230, 0, 50);
     let gradientStrokeBlue = ctx.createRadialGradient(1288, 100, 200, 100, 300, 400);
 

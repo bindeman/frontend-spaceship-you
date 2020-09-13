@@ -24,7 +24,6 @@ import { Line, Bar, Doughnut, Pie } from "react-chartjs-2";
 import animations from "animations.js";
 import { motion } from "framer-motion";
 import { Typography, Slider } from "@material-ui/core";
-import Charts from "chart.js";
 // reactstrap components
 import {
   Button,
@@ -54,6 +53,7 @@ import {
   chartExample4,
     radialChart
 } from "variables/charts.js";
+import moment from "moment";
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -68,6 +68,8 @@ class Dashboard extends React.Component {
       mentalData: [4, 5, 8, 5, 4, 9, 9, 8, 9, 3, 1, 3],
       mentalLabels: [4, 5, 8, 5, 4, 9, 9, 8, 9, 3, 1, 3],
       physicalSlider: 5,
+      sleepSlider: 5,
+      sleepDate: '5:00',
       mentalSlider: 5,
       data2: {
         labels: [
@@ -114,6 +116,12 @@ class Dashboard extends React.Component {
   onChangePhysical = (event, newValue) => {
     this.setState({ physicalSlider: newValue });
   };
+
+  onChangeSleep = (event, newValue) => {
+    let convertedSleep = moment.utc(moment.duration(newValue, "hours").asMilliseconds()).format("H:mm");
+    this.setState({ sleepSlider: newValue, sleepDate: convertedSleep});
+  };
+
 
   setBgChartData = (name) => {
     this.setState({
@@ -165,12 +173,49 @@ class Dashboard extends React.Component {
                   </Row>
                 </CardHeader>
                 <CardBody>
-                  <div className="chart-area">
+                  <Row>
+                  <Col xs="4">
+                  <div className="chart-radial">
+
                     <Pie
                       data={radialChart["timeDist"]}
                       options={radialChart.options}
                     />
                   </div>
+                    </Col>
+                    <Col xs='2'>
+                      <CardTitle tag="h3">{this.state.sleepDate} hours</CardTitle>
+                      <h5
+                          style={{
+                            marginTop: "-12px",
+                            marginBottom: "20px",
+                          }}
+                          className="card-category"
+                      >
+                        Sleep
+                      </h5>
+                      <Slider
+                          defaultValue={5}
+                          value={this.state.sleepSlider}
+                          onChange={this.onChangeSleep}
+                          aria-labelledby="discrete-slider"
+                          orientation="vertical"
+                          valueLabelDisplay="auto"
+                          step={0.01}
+                          min={1}
+                          max={10}
+                          style={{
+                            height: "220px",
+                            margin: "auto",
+                            display: "block",
+                          }}
+                      />
+
+
+                    </Col>
+                  </Row>
+
+
                 </CardBody>
               </Card>
             </Col>
