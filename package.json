@@ -1,0 +1,33 @@
+{
+  "name": "vis-ai",
+  "version": "0.0.5",
+  "description": "neural net visualizer",
+  "main": "server.js",
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "author": "Andrew, Shaur, Phil",
+  "license": "ISC",
+  "dependencies": {
+    "@types/material-ui": "^0.21.7",
+    "@types/react-router-dom": "^5.1.5",
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.2.0",
+    "express": "^4.17.1",
+    "formik-persist": "^1.1.0",
+    "mongoose": "^5.9.12",
+    "react": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "typescript": "^3.9.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
