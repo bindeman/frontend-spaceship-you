@@ -102,7 +102,7 @@ class Sleep extends React.Component {
             <NotificationAlert ref="notificationAlert" />
           </div>
           <Row>
-            <Col md="6">
+            <Col lg="6">
               <Card>
                 <CardHeader>
                   <CardTitle tag="h3">
@@ -191,7 +191,7 @@ class Sleep extends React.Component {
                 </CardBody>
               </Card>
             </Col>
-            <Col md="6">
+            <Col lg="6">
               <Button
                 block
                 color="primary"
