@@ -23,7 +23,7 @@
 let chart1_2_options = {
   maintainAspectRatio: false,
   legend: {
-    display: false
+    display: false,
   },
   tooltips: {
     backgroundColor: "#f5f5f5",
@@ -33,7 +33,7 @@ let chart1_2_options = {
     xPadding: 12,
     mode: "nearest",
     intersect: 0,
-    position: "nearest"
+    position: "nearest",
   },
   responsive: true,
   scales: {
@@ -43,15 +43,15 @@ let chart1_2_options = {
         gridLines: {
           drawBorder: false,
           color: "rgba(29,140,248,0.0)",
-          zeroLineColor: "transparent"
+          zeroLineColor: "transparent",
         },
         ticks: {
           suggestedMin: 60,
           suggestedMax: 125,
           padding: 20,
-          fontColor: "#9a9a9a"
-        }
-      }
+          fontColor: "#9a9a9a",
+        },
+      },
     ],
     xAxes: [
       {
@@ -59,22 +59,22 @@ let chart1_2_options = {
         gridLines: {
           drawBorder: false,
           color: "rgba(29,140,248,0.1)",
-          zeroLineColor: "transparent"
+          zeroLineColor: "transparent",
         },
         ticks: {
           padding: 20,
-          fontColor: "#9a9a9a"
-        }
-      }
-    ]
-  }
+          fontColor: "#9a9a9a",
+        },
+      },
+    ],
+  },
 };
 
 // #########################################
 // // // used inside src/views/Dashboard.js
 // #########################################
 let chartExample1 = {
-  data1: canvas => {
+  data1: (canvas) => {
     let ctx = canvas.getContext("2d");
 
     let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
@@ -82,7 +82,7 @@ let chartExample1 = {
     gradientStroke.addColorStop(1, "rgba(29,140,248,0.2)");
     gradientStroke.addColorStop(0.4, "rgba(29,140,248,0.0)");
     gradientStroke.addColorStop(0, "rgba(29,140,248,0)"); //blue colors
-//TODO generate month and day data
+    //TODO generate month and day data
     return {
       labels: [
         "SEP 12",
@@ -96,7 +96,7 @@ let chartExample1 = {
         "SEP 4",
         "SEP 3",
         "SEP 2",
-        "SEP 1"
+        "SEP 1",
       ],
       datasets: [
         {
@@ -114,57 +114,12 @@ let chartExample1 = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: [8, 7, 9, 3, 6, 7, 5, 10, 6, 7, 8, 5]
-        }
-      ]
-    };
-  },
-  data2: canvas => {
-    let ctx = canvas.getContext("2d");
-
-    let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
-
-    gradientStroke.addColorStop(1, "rgba(29,140,248,0.2)");
-    gradientStroke.addColorStop(0.4, "rgba(29,140,248,0.0)");
-    gradientStroke.addColorStop(0, "rgba(29,140,248,0)"); //blue colors
-
-    return {
-      labels: [
-        "SEP 12",
-        "SEP 11",
-        "SEP 10",
-        "SEP 9",
-        "SEP 8",
-        "SEP 7",
-        "SEP 6",
-        "SEP 5",
-        "SEP 4",
-        "SEP 3",
-        "SEP 2",
-        "SEP 1"
+          data: [8, 7, 9, 3, 6, 7, 5, 10, 6, 7, 8, 5],
+        },
       ],
-      datasets: [
-        {
-          label: "My First dataset",
-          fill: true,
-          backgroundColor: gradientStroke,
-          borderColor: "#1f8ef1",
-          borderWidth: 2,
-          borderDash: [],
-          borderDashOffset: 0.0,
-          pointBackgroundColor: "#1f8ef1",
-          pointBorderColor: "rgba(255,255,255,0)",
-          pointHoverBackgroundColor: "#1f8ef1",
-          pointBorderWidth: 20,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 15,
-          pointRadius: 4,
-          data: [80, 120, 105, 110, 95, 105, 90, 100, 80, 95, 70, 120]
-        }
-      ]
     };
   },
-  data3: canvas => {
+  data2: (canvas) => {
     let ctx = canvas.getContext("2d");
 
     let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
@@ -186,7 +141,7 @@ let chartExample1 = {
         "SEP 4",
         "SEP 3",
         "SEP 2",
-        "SEP 1"
+        "SEP 1",
       ],
       datasets: [
         {
@@ -204,19 +159,64 @@ let chartExample1 = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130]
-        }
-      ]
+          data: [80, 120, 105, 110, 95, 105, 90, 100, 80, 95, 70, 120],
+        },
+      ],
     };
   },
-  options: chart1_2_options
+  data3: (canvas) => {
+    let ctx = canvas.getContext("2d");
+
+    let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke.addColorStop(1, "rgba(29,140,248,0.2)");
+    gradientStroke.addColorStop(0.4, "rgba(29,140,248,0.0)");
+    gradientStroke.addColorStop(0, "rgba(29,140,248,0)"); //blue colors
+
+    return {
+      labels: [
+        "SEP 12",
+        "SEP 11",
+        "SEP 10",
+        "SEP 9",
+        "SEP 8",
+        "SEP 7",
+        "SEP 6",
+        "SEP 5",
+        "SEP 4",
+        "SEP 3",
+        "SEP 2",
+        "SEP 1",
+      ],
+      datasets: [
+        {
+          label: "My First dataset",
+          fill: true,
+          backgroundColor: gradientStroke,
+          borderColor: "#1f8ef1",
+          borderWidth: 2,
+          borderDash: [],
+          borderDashOffset: 0.0,
+          pointBackgroundColor: "#1f8ef1",
+          pointBorderColor: "rgba(255,255,255,0)",
+          pointHoverBackgroundColor: "#1f8ef1",
+          pointBorderWidth: 20,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 15,
+          pointRadius: 4,
+          data: [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130],
+        },
+      ],
+    };
+  },
+  options: chart1_2_options,
 };
 
 // #########################################
 // // // used inside src/views/Dashboard.js
 // #########################################
 let chartExample2 = {
-  data: canvas => {
+  data: (canvas) => {
     let ctx = canvas.getContext("2d");
 
     let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
@@ -243,19 +243,19 @@ let chartExample2 = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: [80, 100, 70, 80, 120, 80]
-        }
-      ]
+          data: [80, 100, 70, 80, 120, 80],
+        },
+      ],
     };
   },
-  options: chart1_2_options
+  options: chart1_2_options,
 };
 
 // #########################################
 // // // used inside src/views/Dashboard.js
 // #########################################
 let chartExample3 = {
-  data: canvas => {
+  data: (canvas) => {
     let ctx = canvas.getContext("2d");
 
     let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
@@ -265,10 +265,10 @@ let chartExample3 = {
     gradientStroke.addColorStop(0, "rgba(119,52,169,0)"); //purple colors
 
     return {
-      labels: ["SEP 12", "SEP 11", "SEP 10", "SEP 9", "SEP 8", "SEP 7"],
+      labels: ["SEP 7", "SEP 8", "SEP 9", "SEP 10", "SEP 11", "SEP 12"],
       datasets: [
         {
-          label: "Countries",
+          label: "Hours",
           fill: true,
           backgroundColor: gradientStroke,
           hoverBackgroundColor: gradientStroke,
@@ -276,15 +276,15 @@ let chartExample3 = {
           borderWidth: 2,
           borderDash: [],
           borderDashOffset: 0.0,
-          data: [53, 20, 10, 80, 100, 45]
-        }
-      ]
+          data: [6.48, 4.5, 7.2, 8.5, 8, 6],
+        },
+      ],
     };
   },
   options: {
     maintainAspectRatio: false,
     legend: {
-      display: false
+      display: false,
     },
     tooltips: {
       backgroundColor: "#f5f5f5",
@@ -294,7 +294,7 @@ let chartExample3 = {
       xPadding: 12,
       mode: "nearest",
       intersect: 0,
-      position: "nearest"
+      position: "nearest",
     },
     responsive: true,
     scales: {
@@ -303,38 +303,38 @@ let chartExample3 = {
           gridLines: {
             drawBorder: false,
             color: "rgba(225,78,202,0.1)",
-            zeroLineColor: "transparent"
+            zeroLineColor: "transparent",
           },
           ticks: {
             suggestedMin: 0,
             suggestedMax: 10,
             padding: 20,
-            fontColor: "#9e9e9e"
-          }
-        }
+            fontColor: "#9e9e9e",
+          },
+        },
       ],
       xAxes: [
         {
           gridLines: {
             drawBorder: false,
             color: "rgba(225,78,202,0.1)",
-            zeroLineColor: "transparent"
+            zeroLineColor: "transparent",
           },
           ticks: {
             padding: 20,
-            fontColor: "#9e9e9e"
-          }
-        }
-      ]
-    }
-  }
+            fontColor: "#9e9e9e",
+          },
+        },
+      ],
+    },
+  },
 };
 
 // #########################################
 // // // used inside src/views/Dashboard.js
 // #########################################
 const chartExample4 = {
-  data: canvas => {
+  data: (canvas) => {
     let ctx = canvas.getContext("2d");
 
     let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
@@ -361,15 +361,15 @@ const chartExample4 = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: [90, 27, 60, 12, 80]
-        }
-      ]
+          data: [90, 27, 60, 12, 80],
+        },
+      ],
     };
   },
   options: {
     maintainAspectRatio: false,
     legend: {
-      display: false
+      display: false,
     },
 
     tooltips: {
@@ -380,7 +380,7 @@ const chartExample4 = {
       xPadding: 12,
       mode: "nearest",
       intersect: 0,
-      position: "nearest"
+      position: "nearest",
     },
     responsive: true,
     scales: {
@@ -390,15 +390,15 @@ const chartExample4 = {
           gridLines: {
             drawBorder: false,
             color: "rgba(29,140,248,0.0)",
-            zeroLineColor: "transparent"
+            zeroLineColor: "transparent",
           },
           ticks: {
             suggestedMin: 50,
             suggestedMax: 125,
             padding: 20,
-            fontColor: "#9e9e9e"
-          }
-        }
+            fontColor: "#9e9e9e",
+          },
+        },
       ],
 
       xAxes: [
@@ -407,21 +407,21 @@ const chartExample4 = {
           gridLines: {
             drawBorder: false,
             color: "rgba(0,242,195,0.1)",
-            zeroLineColor: "transparent"
+            zeroLineColor: "transparent",
           },
           ticks: {
             padding: 20,
-            fontColor: "#9e9e9e"
-          }
-        }
-      ]
-    }
-  }
+            fontColor: "#9e9e9e",
+          },
+        },
+      ],
+    },
+  },
 };
 
 module.exports = {
   chartExample1, // in src/views/Dashboard.js
   chartExample2, // in src/views/Dashboard.js
   chartExample3, // in src/views/Dashboard.js
-  chartExample4 // in src/views/Dashboard.js
+  chartExample4, // in src/views/Dashboard.js
 };
