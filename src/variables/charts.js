@@ -78,8 +78,8 @@ let chart1_2_options = {
           zeroLineColor: "transparent",
         },
         ticks: {
-          suggestedMin: 60,
-          suggestedMax: 125,
+          suggestedMin: 0,
+          suggestedMax: 10,
           padding: 20,
           fontColor: "#9a9a9a",
         },
@@ -102,9 +102,82 @@ let chart1_2_options = {
   },
 };
 
+
+let radialChartOptions = {
+  maintainAspectRatio: false,
+  legend: {
+    display: false,
+  },
+  tooltips: {
+    backgroundColor: "#f5f5f5",
+    titleFontColor: "#333",
+    bodyFontColor: "#666",
+    bodySpacing: 4,
+    xPadding: 12,
+    mode: "nearest",
+    intersect: 0,
+    position: "nearest",
+  },
+  responsive: true,
+
+};
+
 // #########################################
 // // // used inside src/views/Dashboard.js
 // #########################################
+
+let radialChart = {
+  timeDist: (canvas) => {
+    let ctx = canvas.getContext("2d");
+
+    //let gradientStrokeBlue = ctx.createLinearGradient(, 230, 0, 50);
+    let gradientStrokeBlue = ctx.createRadialGradient(1288, 100, 200, 100, 300, 400);
+
+    gradientStrokeBlue.addColorStop(1, "rgba(29,140,248,0.5)");
+    gradientStrokeBlue.addColorStop(0.4, "rgba(29,140,248,0.05)");
+    gradientStrokeBlue.addColorStop(0, "rgba(29,140,248,0)"); //blue colors
+
+    // let gradientStrokePurple = ctx.createLinearGradient(0, 230, 0, 50);
+    //
+    // gradientStrokePurple.addColorStop(1, "rgba(72,72,176,0.5)");
+    // gradientStrokePurple.addColorStop(0.4, "rgba(72,72,176,0.0)");
+    // gradientStrokePurple.addColorStop(0, "rgba(119,52,169,0)"); //purple colors
+    //
+
+
+    return {
+      labels: [
+        "Workout",
+        "Sleep",
+        "Couch",
+        "Creative",
+      ],
+      datasets: [
+        {
+          label: "Time Distribution",
+          fill: true,
+          backgroundColor: gradientStrokeBlue,
+          borderColor: "#1f8ef1",
+          borderWidth: 2,
+          borderDash: [],
+          borderDashOffset: 0.0,
+          pointBackgroundColor: "#1f8ef1",
+          pointBorderColor: "rgba(255,255,255,0)",
+          pointHoverBackgroundColor: "#1f8ef1",
+          pointBorderWidth: 20,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 15,
+          pointRadius: 4,
+          data: [8.54, 7.23, 9.21, 3.21],
+        },
+      ],
+    };
+  },
+  options: radialChartOptions,
+};
+
+
+
 let chartExample1 = {
   data1: (canvas) => {
     let ctx = canvas.getContext("2d");
@@ -141,32 +214,33 @@ let chartExample1 = {
   data2: (canvas) => {
     let ctx = canvas.getContext("2d");
 
-    let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+    //let gradientStrokeBlue = ctx.createLinearGradient(, 230, 0, 50);
+    let gradientStrokeBlue = ctx.createRadialGradient(1288, 100, 200, 100, 300, 400);
 
-    gradientStroke.addColorStop(1, "rgba(29,140,248,0.2)");
-    gradientStroke.addColorStop(0.4, "rgba(29,140,248,0.0)");
-    gradientStroke.addColorStop(0, "rgba(29,140,248,0)"); //blue colors
+    gradientStrokeBlue.addColorStop(1, "rgba(29,140,248,0.5)");
+    gradientStrokeBlue.addColorStop(0.4, "rgba(29,140,248,0.05)");
+    gradientStrokeBlue.addColorStop(0, "rgba(29,140,248,0)"); //blue colors
+
+    // let gradientStrokePurple = ctx.createLinearGradient(0, 230, 0, 50);
+    //
+    // gradientStrokePurple.addColorStop(1, "rgba(72,72,176,0.5)");
+    // gradientStrokePurple.addColorStop(0.4, "rgba(72,72,176,0.0)");
+    // gradientStrokePurple.addColorStop(0, "rgba(119,52,169,0)"); //purple colors
+    //
+
 
     return {
       labels: [
-        "SEP 12",
-        "SEP 11",
-        "SEP 10",
-        "SEP 9",
-        "SEP 8",
-        "SEP 7",
-        "SEP 6",
-        "SEP 5",
-        "SEP 4",
-        "SEP 3",
-        "SEP 2",
-        "SEP 1",
+        "Workout",
+        "Sleep",
+        "Couch",
+        "Creative",
       ],
       datasets: [
         {
-          label: "My First dataset",
+          label: "Time Distribution",
           fill: true,
-          backgroundColor: gradientStroke,
+          backgroundColor: gradientStrokeBlue,
           borderColor: "#1f8ef1",
           borderWidth: 2,
           borderDash: [],
@@ -178,7 +252,7 @@ let chartExample1 = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: [80, 120, 105, 110, 95, 105, 90, 100, 80, 95, 70, 120],
+          data: [8.54, 7.23, 9.21, 3.21],
         },
       ],
     };
@@ -192,6 +266,9 @@ let chartExample1 = {
     gradientStroke.addColorStop(0.4, "rgba(29,140,248,0.0)");
     gradientStroke.addColorStop(0, "rgba(29,140,248,0)"); //blue colors
 
+
+
+
     return {
       labels: [
         "SEP 12",
@@ -223,7 +300,7 @@ let chartExample1 = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130],
+          data: [8, 5, 9, 3, 3, 7, 5, 10, 6, 7, 1, 5],
         },
       ],
     };
@@ -496,5 +573,5 @@ module.exports = {
   chartExample2, // in src/views/Dashboard.js
   chartExample3, // in src/views/Dashboard.js
   chartExample4, // in src/views/Dashboard.js
-  pieChart,
+  radialChart,
 };

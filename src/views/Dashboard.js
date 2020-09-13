@@ -20,7 +20,7 @@ import React from "react";
 import classNames from "classnames";
 import Timer from "react-compound-timer";
 // react plugin used to create charts
-import { Line, Bar, Doughnut } from "react-chartjs-2";
+import { Line, Bar, Doughnut, Pie } from "react-chartjs-2";
 import animations from "animations.js";
 import { motion } from "framer-motion";
 import { Typography, Slider } from "@material-ui/core";
@@ -52,6 +52,7 @@ import {
   chartExample2,
   chartExample3,
   chartExample4,
+    radialChart
 } from "variables/charts.js";
 
 class Dashboard extends React.Component {
@@ -152,65 +153,6 @@ class Dashboard extends React.Component {
             </Col>
           </Row>
 
-          {/*<Row>*/}
-          {/*<Col xs="12">*/}
-          {/*  <Card className="card-chart">*/}
-
-          {/*    <CardBody>*/}
-          {/*      <Row>*/}
-          {/*      <Col xs="3">*/}
-          {/*        <CardHeader>*/}
-          {/*          <h5 className="card-category">Wellness</h5>*/}
-
-          {/*        <CardTitle tag="h2">*/}
-          {/*          How are you feeling today?*/}
-          {/*        </CardTitle>*/}
-          {/*          <p>Mark the way you are feeling with these sliders. Keep track of the way you're feeling through these sliders.</p>*/}
-          {/*        </CardHeader>*/}
-          {/*      </Col>*/}
-          {/*        <Col xs="3">*/}
-
-          {/*        </Col>*/}
-
-          {/*      </Row>*/}
-          {/*      <Row>*/}
-          {/*        <Col xs="6">*/}
-          {/*          <Typography id="discrete-slider" gutterBottom>*/}
-          {/*            Physical Wellness*/}
-          {/*          </Typography>*/}
-          {/*          <Slider*/}
-          {/*              defaultValue={5}*/}
-          {/*              orientation="vertical"*/}
-          {/*              aria-labelledby="discrete-slider"*/}
-          {/*              valueLabelDisplay="auto"*/}
-          {/*              step={1}*/}
-          {/*              marks*/}
-          {/*              min={1}*/}
-          {/*              max={10}*/}
-          {/*          />*/}
-
-          {/*          <Typography id="discrete-slider" gutterBottom>*/}
-          {/*            Mental Wellness*/}
-          {/*          </Typography>*/}
-          {/*          <Slider*/}
-          {/*              defaultValue={5}*/}
-          {/*              aria-labelledby="discrete-slider"*/}
-          {/*              orientation="vertical"*/}
-          {/*              valueLabelDisplay="auto"*/}
-          {/*              step={1}*/}
-          {/*              marks*/}
-          {/*              min={1}*/}
-          {/*              max={10}*/}
-          {/*          />*/}
-
-          {/*        </Col>*/}
-
-          {/*      </Row>*/}
-          {/*    </CardBody>*/}
-          {/*  </Card>*/}
-          {/*</Col>*/}
-          {/*</Row>*/}
-
           <Row>
             <Col xs="12">
               <Card className="card-chart">
@@ -224,9 +166,9 @@ class Dashboard extends React.Component {
                 </CardHeader>
                 <CardBody>
                   <div className="chart-area">
-                    <Doughnut
-                      data={this.state.chartTemplate}
-                      options={this.state.chartTemplate.options}
+                    <Pie
+                      data={radialChart["timeDist"]}
+                      options={radialChart.options}
                     />
                   </div>
                 </CardBody>
@@ -340,7 +282,7 @@ class Dashboard extends React.Component {
                 <CardBody>
                   <div className="chart-area">
                     <Line
-                      data={this.state.chartTemplate}
+                      data={chartExample1[this.state.bigChartData]}
                       options={chartExample1.options}
                     />
                   </div>
