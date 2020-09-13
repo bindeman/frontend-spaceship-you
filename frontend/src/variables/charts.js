@@ -51,6 +51,17 @@ function generateChartArray(length) {
   return dataLabels;
 }
 
+
+function findAverage(data) {
+  let total = 0;
+  for(let i = 0; i < data.length; i++) {
+    total += data[i];
+  }
+
+  return (total / (data.length)).toPrecision(3);
+
+}
+
 // chartExample1 and chartExample2 options
 let chart1_2_options = {
   maintainAspectRatio: false,
@@ -576,4 +587,6 @@ module.exports = {
   chartExample3, // in src/views/Dashboard.js
   chartExample4, // in src/views/Dashboard.js
   radialChart,
+  generateChartArray,
+  findAverage
 };

@@ -51,7 +51,9 @@ import {
   chartExample2,
   chartExample3,
   chartExample4,
-    radialChart
+    radialChart,
+    generateChartArray,
+    findAverage
 } from "variables/charts.js";
 import moment from "moment";
 import PerfectScrollbar from "perfect-scrollbar";
@@ -67,6 +69,7 @@ class Chart extends React.Component {
     this.state = {
       bigChartData: "data1",
       renderedData: null,
+      chartAverage: 0.0,
       chartTemplate: chartExample1["data1"],
       mentalData: [4, 5, 8, 5, 4, 9, 9, 8, 9, 3, 1, 3],
       mentalLabels: [4, 5, 8, 5, 4, 9, 9, 8, 9, 3, 1, 3],
@@ -75,41 +78,7 @@ class Chart extends React.Component {
       chartData: null,
       sleepDate: '5:00',
       mentalSlider: 5,
-      data2: {
-        labels: [
-          "JAN",
-          "FEB",
-          "MAR",
-          "APR",
-          "MAY",
-          "JUN",
-          "JUL",
-          "AUG",
-          "SEP",
-          "OCT",
-          "NOV",
-          "DEC",
-        ],
-        datasets: [
-          {
-            label: "My First dataset",
-            fill: true,
-            backgroundColor: "none",
-            borderColor: "#1f8ef1",
-            borderWidth: 2,
-            borderDash: [],
-            borderDashOffset: 0.0,
-            pointBackgroundColor: "#1f8ef1",
-            pointBorderColor: "rgba(255,255,255,0)",
-            pointHoverBackgroundColor: "#1f8ef1",
-            pointBorderWidth: 20,
-            pointHoverRadius: 4,
-            pointHoverBorderWidth: 15,
-            pointRadius: 4,
-            //data: [4, 5, 8, 5, 4, 9, 9, 8, 9, 3, 1, 3],
-          },
-        ],
-      },
+      data2: null,
     };
   }
 
@@ -118,30 +87,33 @@ class Chart extends React.Component {
     axios.get(`/api/networks`)
         .then(res => {
 
-          const chartData = res.data[0].data;
+          let gradientStroke = (canvas) => {
+                let ctx = canvas.getContext("2d");
+
+                let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+
+                gradientStroke.addColorStop(1, "rgba(29,140,248,0.2)");
+                gradientStroke.addColorStop(0.4, "rgba(29,140,248,0.0)");
+                gradientStroke.addColorStop(0, "rgba(29,140,248,0)"); //blue colors
+
+              return gradientStroke;
+          }
+
+          const chartData = res.data[0];
+          const avg = findAverage(chartData.data);
           console.log(chartData);
           this.setState({ chartData });
 
+
+
+
          const data2 = {
-            labels: [
-              "JAN",
-              "FEB",
-              "MAR",
-              "APR",
-              "MAY",
-              "JUN",
-              "JUL",
-              "AUG",
-              "SEP",
-              "OCT",
-              "NOV",
-              "DEC",
-            ],
+            labels: generateChartArray(12),
                 datasets: [
               {
-                label: "My First dataset",
+                label: chartData.name,
                 fill: true,
-                backgroundColor: "none",
+                backgroundColor: blue,
                 borderColor: "#1f8ef1",
                 borderWidth: 2,
                 borderDash: [],
@@ -153,11 +125,12 @@ class Chart extends React.Component {
                 pointHoverRadius: 4,
                 pointHoverBorderWidth: 15,
                 pointRadius: 4,
-                data: chartData,
+                data: chartData.data,
               },
             ],
           };
           this.setState({renderedData: data2});
+          this.setState({chartAverage: avg})
         })
 
 
@@ -172,7 +145,7 @@ class Chart extends React.Component {
               <Row>
                 <Col className="text-left" sm="6">
                   <h5 className="card-category">Physical Health</h5>
-                  <CardTitle tag="h2">7.92</CardTitle>
+                  <CardTitle tag="h2">{this.state.chartAverage}</CardTitle>
                 </Col>
                 <Col sm="6">
                   <ButtonGroup
