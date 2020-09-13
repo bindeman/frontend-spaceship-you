@@ -373,48 +373,48 @@ class Dashboard extends React.Component {
             </Col>
           </Row>
 
-        <Row>
-          <Col xs="12">
-            <Card className="card-chart">
-              <CardHeader>
-                <Row>
-                  <Col className="text-left" sm="6">
+        {/*<Row>*/}
+        {/*  <Col xs="12">*/}
+        {/*    <Card className="card-chart">*/}
+        {/*      <CardHeader>*/}
+        {/*        <Row>*/}
+        {/*          <Col className="text-left" sm="6">*/}
 
-                    <h5 className="card-category">
-                      Mental Health
-                    </h5>
-                    <CardTitle tag="h2">
-                      <Timer
-                          initialTime={ 9000 * 60 * 48 + 5000}
-                          lastUnit="h"
-                          direction="backward"
-                      >
-                        {() => (
-                            <React.Fragment>
-                              <Timer.Hours />:
-                              <Timer.Minutes />:
-                              <Timer.Seconds />
-                            </React.Fragment>
-                        )}
-                      </Timer>
-                    </CardTitle>
-                  </Col>
-                  <Col sm="6">
+        {/*            <h5 className="card-category">*/}
+        {/*              Mental Health*/}
+        {/*            </h5>*/}
+        {/*            <CardTitle tag="h2">*/}
+        {/*              <Timer*/}
+        {/*                  initialTime={ 9000 * 60 * 48 + 5000}*/}
+        {/*                  lastUnit="h"*/}
+        {/*                  direction="backward"*/}
+        {/*              >*/}
+        {/*                {() => (*/}
+        {/*                    <React.Fragment>*/}
+        {/*                      <Timer.Hours />:*/}
+        {/*                      <Timer.Minutes />:*/}
+        {/*                      <Timer.Seconds />*/}
+        {/*                    </React.Fragment>*/}
+        {/*                )}*/}
+        {/*              </Timer>*/}
+        {/*            </CardTitle>*/}
+        {/*          </Col>*/}
+        {/*          <Col sm="6">*/}
 
-                  </Col>
-                </Row>
-              </CardHeader>
-              <CardBody>
-                <div className="chart-area">
-                  <Line
-                      data={chartExample1[this.state.bigChartData]}
-                      options={chartExample1.options}
-                  />
-                </div>
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
+        {/*          </Col>*/}
+        {/*        </Row>*/}
+        {/*      </CardHeader>*/}
+        {/*      <CardBody>*/}
+        {/*        <div className="chart-area">*/}
+        {/*          <Line*/}
+        {/*              data={chartExample1[this.state.bigChartData]}*/}
+        {/*              options={chartExample1.options}*/}
+        {/*          />*/}
+        {/*        </div>*/}
+        {/*      </CardBody>*/}
+        {/*    </Card>*/}
+        {/*  </Col>*/}
+        {/*</Row>*/}
 
 
 
