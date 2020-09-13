@@ -19,6 +19,38 @@
 // // // Chart variables
 // #############################
 
+function generateChartArray(length) {
+  const shortMonth = [
+    "JAN",
+    "FEB",
+    "MAR",
+    "APR",
+    "MAY",
+    "JUN",
+    "JUL",
+    "AUG",
+    "SEP",
+    "OCT",
+    "NOV",
+    "DEC",
+  ];
+
+  const d = new Date();
+  let dataLabels = [];
+  let month = d.getMonth();
+  let date = d.getDate();
+  for (let i = 0; i < length; i++) {
+    if (date - i === 0) {
+      month--;
+      date = 30; //TODO take into account different month lengths make months actually work
+    }
+    if (month < 0) month = 11;
+
+    dataLabels.push(`${shortMonth[month]} ${date - i}`);
+  }
+  return dataLabels;
+}
+
 // chartExample1 and chartExample2 options
 let chart1_2_options = {
   maintainAspectRatio: false,
@@ -78,26 +110,13 @@ let chartExample1 = {
     let ctx = canvas.getContext("2d");
 
     let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
-
+    let monthLabels = generateChartArray(12);
     gradientStroke.addColorStop(1, "rgba(29,140,248,0.2)");
     gradientStroke.addColorStop(0.4, "rgba(29,140,248,0.0)");
     gradientStroke.addColorStop(0, "rgba(29,140,248,0)"); //blue colors
     //TODO generate month and day data
     return {
-      labels: [
-        "SEP 12",
-        "SEP 11",
-        "SEP 10",
-        "SEP 9",
-        "SEP 8",
-        "SEP 7",
-        "SEP 6",
-        "SEP 5",
-        "SEP 4",
-        "SEP 3",
-        "SEP 2",
-        "SEP 1",
-      ],
+      labels: monthLabels,
       datasets: [
         {
           label: "My First dataset",
@@ -114,7 +133,7 @@ let chartExample1 = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: [8, 7, 9, 3, 6, 7, 5, 10, 6, 7, 8, 5],
+          data: [8, 7, 9, 3, 6, 7, 5, 10, 6, 7, 8, 5], //replace with api call
         },
       ],
     };
@@ -419,9 +438,63 @@ const chartExample4 = {
   },
 };
 
+const pieChart = {
+  data: (canvas) => {
+    let ctx = canvas.getContext("2d");
+
+    // let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+    //
+    // gradientStroke.addColorStop(1, "rgba(66,134,121,0.15)");
+    // gradientStroke.addColorStop(0.4, "rgba(66,134,121,0.0)"); //green colors
+    // gradientStroke.addColorStop(0, "rgba(66,134,121,0)"); //green colors
+
+    return {
+      labels: ["Sleep, Workout, Couch, Creative"],
+      datasets: [
+        {
+          label: "Distribution",
+          fill: true,
+          backgroundColor: ["blue", "red", "orange", "green"],
+          borderColor: "#00d6b4",
+          borderWidth: 2,
+          borderDash: [],
+          borderDashOffset: 0.0,
+          pointBackgroundColor: "#00d6b4",
+          pointBorderColor: "rgba(255,255,255,0)",
+          pointHoverBackgroundColor: "#00d6b4",
+          pointBorderWidth: 20,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 15,
+          pointRadius: 4,
+          data: [10, 10, 20, 50, 40],
+        },
+      ],
+    };
+  },
+  options: {
+    maintainAspectRatio: false,
+    legend: {
+      display: false,
+    },
+
+    tooltips: {
+      backgroundColor: "#f5f5f5",
+      titleFontColor: "#333",
+      bodyFontColor: "#666",
+      bodySpacing: 4,
+      xPadding: 12,
+      mode: "nearest",
+      intersect: 0,
+      position: "nearest",
+    },
+    responsive: true,
+  },
+};
+
 module.exports = {
   chartExample1, // in src/views/Dashboard.js
   chartExample2, // in src/views/Dashboard.js
   chartExample3, // in src/views/Dashboard.js
   chartExample4, // in src/views/Dashboard.js
+  pieChart,
 };
